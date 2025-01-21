@@ -18,8 +18,8 @@ def main(args):
 
     # split dataset into batches
     fileset_path = Path.cwd() / "analysis" / "filesets"
-    with open(f"{fileset_path}/{args['year']}_nanov12.yaml", "r") as f:
-        root_files = yaml.safe_load(f)[args["dataset"]]
+    with open(f"{fileset_path}/fileset_{args['year']}_NANO_lxplus.json", "r") as f:
+        root_files = json.load(f)[args["dataset"]]
     root_files_list = divide_list(root_files, args["nfiles"])
     
     # submit job for each partition
@@ -40,8 +40,8 @@ def main(args):
             f"--dataset {dataset_key} "
             # dictionaries must be passed as a string enclosed in single quotes,
             # with strings within the dictionary enclosed in double quotes.
-            # we use json.dumps() or yaml.dump() to switch from single to double quotes within the dictionary
-            f"--partition_fileset '{yaml.dump(partition_fileset)}' "
+            # we use json.dumps() to switch from single to double quotes within the dictionary
+            f"--partition_fileset '{json.dumps(partition_fileset)}' "
         )
         submit_condor(args)
 
