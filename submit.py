@@ -1,4 +1,5 @@
 import json
+import yaml
 import time
 import pickle
 import argparse
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--partition_fileset",
         dest="partition_fileset",
-        type=json.loads,
+        type=yaml.safe_load,
         help="partition_fileset needed to preprocess a fileset",
     )
     parser.add_argument(
