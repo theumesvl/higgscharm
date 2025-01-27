@@ -1,5 +1,5 @@
 import glob
-import yaml
+import json
 import argparse
 import subprocess
 from pathlib import Path
@@ -19,9 +19,9 @@ def main(args):
     total_files = len(condor_files)
 
     # get jobs already run
-    dataset_path = f"{main_dir}/analysis/filesets/{args.year}_nanov12.yaml"
+    dataset_path = f"{main_dir}/analysis/filesets/fileset_{args.year}_NANO_lxplus.json"
     with open(dataset_path, "r") as f:
-        dataset_config = yaml.safe_load(f)
+        dataset_config = json.load(f)
     datasets = dataset_config.keys()
 
     run_done = []
