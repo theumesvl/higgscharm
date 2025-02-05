@@ -108,93 +108,179 @@ TBbarQ:
   query: TBbarQ_t-channel_4FS_TuneCP5_13p6TeV_powheg-madspin-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
   process: Single Top
   xsec: 123.8
+TbarQto2Q:
+  era: MC
+  query: TbarQto2Q-t-channel_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 78.56
+TbarQtoLNu:
+  era: MC
+  query: TbarQtoLNu-t-channel_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 78.56
+TQbarto2Q:
+  era: MC
+  query: TQbarto2Q-t-channel_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 130.0
+TQbartoLNu:
+  era: MC
+  query: TQbartoLNu-t-channel_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 130.0
+TbarBtoLminusNuB:
+  era: MC
+  query: TbarBtoLminusNuB-s-channel-4FS_TuneCP5_13p6TeV_amcatnlo-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 1.43
+TBbartoLplusNuBbar:
+  era: MC
+  query: TBbartoLplusNuBbar-s-channel-4FS_TuneCP5_13p6TeV_amcatnlo-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Single Top
+  xsec: 1.43
 WW:
   era: MC
   query: WW_TuneCP5_13p6TeV_pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
   process: Diboson
   xsec: 80.23
+WWtoLNu2Q:
+  era: MC
+  query: WWtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 48.94
+WWtoLNu2Q-1Jets:
+  era: MC
+  query: WWtoLNu2Q-1Jets-4FS_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 52.98
+WWto4Q:
+  era: MC
+  query: WWto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 50.79
+WWto4Q-1Jets:
+  era: MC
+  query: WWto4Q-1Jets-4FS_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 54.82
+WWto2L2Nu:
+  era: MC
+  query: WWto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 11.79
 WZ:
   era: MC
   query: WZ_TuneCP5_13p6TeV_pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
   process: Diboson
   xsec: 29.1
+WZto3LNu:
+  era: MC
+  query: WZto3LNu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 4.924
+WZto3LNu-1Jets:
+  era: MC
+  query: WZto3LNu-1Jets-4FS_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6_ext1-v2/NANOAODSIM
+  process: Diboson
+  xsec: 5.315
+WZto2L2Q:
+  era: MC
+  query: WZto2L2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 7.568
+WZtoLNu2Q:
+  era: MC
+  query: WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 15.87
+WZtoLNu2Q-1Jets:
+  era: MC
+  query: WZtoLNu2Q-1Jets-4FS_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 12.11
+WZtoL3Nu-1Jets:
+  era: MC
+  query: WZtoL3Nu-1Jets-4FS_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 3.445
 ZZ:
   era: MC
   query: ZZ_TuneCP5_13p6TeV_pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
   process: Diboson
   xsec: 12.75
-WZto3LNu:
-  era: MC
-  query: WZto3LNu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: WZ
-  xsec: 4.924
 ZZto4L:
   era: MC
   query: ZZto4L_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: qqToZZ
+  process: Diboson
   xsec: 1.39
-GluGluToContinto2Zto2E2Mu:
+ZZto4L-1Jets:
   era: MC
-  query: GluGluToContinto2Zto2E2Mu_TuneCP5_13p6TeV_mcfm701-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: ggToZZ
-  xsec: 6.115
-GluGluToContinto2Zto2E2Tau:
+  query: ZZto4L-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6_ext1-v2/NANOAODSIM
+  process: Diboson
+  xsec: 1.499
+ZZto2L2Nu:
   era: MC
-  query: GluGluToContinto2Zto2E2Tau_TuneCP5_13p6TeV_mcfm701-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v4/NANOAODSIM
-  process: ggToZZ
-  xsec: 6.242
-GluGluToContinto2Zto2Mu2Tau:
+  query: ZZto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 1.031
+ZZto2Nu2Q:
   era: MC
-  query: GluGluToContinto2Zto2Mu2Tau_TuneCP5_13p6TeV_mcfm701-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v4/NANOAODSIM
-  process: ggToZZ
-  xsec: 6.242
-GluGlutoContinto2Zto4E:
+  query: ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 4.826
+ZZto2L2Q:
   era: MC
-  query: GluGlutoContinto2Zto4E_TuneCP5_13p6TeV_mcfm-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: ggToZZ
-  xsec: 3.06
-GluGlutoContinto2Zto4Mu:
+  query: ZZto2L2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 6.788
+ZZto2L2Q-1Jets:
   era: MC
-  query: GluGlutoContinto2Zto4Mu_TuneCP5_13p6TeV_mcfm-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: ggToZZ
-  xsec: 3.042
-GluGlutoContinto2Zto4Tau:
+  query: ZZto2L2Q-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6_ext1-v2/NANOAODSIM
+  process: Diboson
+  xsec: 3.86
+WGtoLNuG-PTG-10to100:
   era: MC
-  query: GluGlutoContinto2Zto4Tau_TuneCP5_13p6TeV_mcfm-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: ggToZZ
-  xsec: 3.042
-bbH_Hto2Zto4L:
+  query: WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: Diboson
+  xsec: 662.2
+WGtoLNuG-PTG-100to200:
   era: MC
-  query: bbH_Hto2Zto4L_M-125_TuneCP5_13p6TeV_JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v1/NANOAODSIM
-  process: H(125) #bbH
-  xsec: 4.88
-GluGluHtoZZto4L:
+  query: WGtoLNuG-1Jets_PTG-100to200_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EEMiniAODv4-130X_mcRun3_2022_realistic_postEE_v6-v2/MINIAODSIM
+  process: Diboson
+  xsec: 2.221
+WGtoLNuG-PTG-200to400:
   era: MC
-  query: GluGluHtoZZto4L_M-125_TuneCP5_13p6TeV_powheg2-JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #ggH
-  xsec: 23.16
-ZHto2Zto4L:
+  query: WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v3/NANOAODSIM
+  process: Diboson
+  xsec: 0.2908
+WGtoLNuG-PTG-400to600:
   era: MC
-  query: ZHto2Zto4L_M125_TuneCP5_13p6TeV_powheg2-minlo-HZJ-JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #ZH
-  xsec: 8.839
-TTH_Hto2Z:
+  query: WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v3/NANOAODSIM
+  process: Diboson
+  xsec: 0.02231
+WGtoLNuG-PTG-600:
   era: MC
-  query: TTH_Hto2Z_M-125_4LFilter_TuneCP5_13p6TeV_powheg2-JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #ttH
-  xsec: 0.5806
-VBFHto2Zto4L:
+  query: WGtoLNuG-1Jets_PTG-600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v3/NANOAODSIM
+  process: Diboson
+  xsec: 0.004907
+WtoLNu-2Jets_0J:
   era: MC
-  query: VBFHto2Zto4L_M125_TuneCP5_13p6TeV_powheg-jhugenv752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #VBF
-  xsec: 4.224
-WminusH_Hto2Zto4L:
+  query: WtoLNu-2Jets_0J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v3/NANOAODSIM
+  process: V+jets
+  xsec: 55760.0
+WtoLNu-2Jets_1J:
   era: MC
-  query: WminusH_Hto2Zto4L_M-125_TuneCP5_13p6TeV_powheg2-minlo-HWJ-JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #WH
-  xsec: 0.5803
-WplusH_Hto2Zto4L:
+  query: WtoLNu-2Jets_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: V+jets
+  xsec: 9529.0
+WtoLNu-2Jets_2J:
   era: MC
-  query: WplusH_Hto2Zto4L_M-125_TuneCP5_13p6TeV_powheg2-minlo-HWJ-JHUGenV752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: H(125) #WH
-  xsec: 0.9218
+  query: WtoLNu-2Jets_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: V+jets
+  xsec: 3532.0
+WtoLNu-2Jets:
+  era: MC
+  query: WtoLNu-2Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  process: V+jets
+  xsec: 67710.0
+
