@@ -24,6 +24,20 @@ data_samples = {
             "EGammaG",
         ],
     },
+    "WWtoMuEle": {
+        "2022preEE": ["MuonC", "MuonD", "MuonEGC", "MuonEGD", "EGammaC", "EGammaD"],
+        "2022postEE": [
+            "MuonE",
+            "MuonF",
+            "MuonG",
+            "MuonEGE",
+            "MuonEGF",
+            "MuonEGG",
+            "EGammaE",
+            "EGammaF",
+            "EGammaG",
+        ],
+    },
 }
 mc_samples = {
     "ztoee": [
@@ -87,6 +101,27 @@ mc_samples = {
         "GluGlutoContinto2Zto4Mu",
         "GluGlutoContinto2Zto4Tau",
         "ZZto4L",
+    ],
+    "WWtoMuEle": [
+        # Ttbar
+        "TTto2L2Nu",
+        "TTto4Q",
+        "TTtoLNu2Q",
+        # SingleTop
+        "TbarWplusto2L2Nu",
+        "TWminusto2L2Nu",
+        "TWminustoLNu2Q",
+        "TbarWplusto4Q",
+        "TbarWplustoLNu2Q",
+        "TWminusto4Q",
+        "TbarBQ",
+        "TBbarQ",
+        "TbarQto2Q",
+        "TbarQtoLNu",
+        "TQbarto2Q",
+        "TQbartoLNu",
+        "TbarBtoLminusNuB",
+        "TBbartoLplusNuBbar",
     ],
 }
 

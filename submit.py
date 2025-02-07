@@ -9,6 +9,7 @@ from coffea.nanoevents import NanoAODSchema
 from analysis.processors.ztoee import ZToEEProcessor
 from analysis.processors.ztomumu import ZToMuMuProcessor
 from analysis.processors.zzto4l import ZZTo4LProcessor
+from analysis.processors.WWtoMuEle import WWtoMuEleProcessor
 
 
 def main(args):
@@ -16,6 +17,7 @@ def main(args):
         "ztomumu": ZToMuMuProcessor(year=args.year),
         "ztoee": ZToEEProcessor(year=args.year),
         "zzto4l": ZZTo4LProcessor(year=args.year),
+        "WWtoMuEle": WWtoMuEleProcessor(year=args.year),
     }
     t0 = time.monotonic()
     out = processor.run_uproot_job(
