@@ -3,14 +3,10 @@ lumidata: analysis/data/lumi2022.csv
 hlt_paths:
   Muon:
     - SingleMu
-    - DiMu
-    - TriMu
   MuonEG:
     - MuEle
   EGamma:
     - SingleEle
-    - DiEle
-    - TriEle
 object_selection:
   muons:
     field: events.Muon
@@ -31,210 +27,145 @@ object_selection:
       dxy: events.Electron.dxy < 0.5
       sip3d: events.Electron.sip3d < 4
       electron_id: wp80iso
-      electron_muon_dr: delta_r_mask(events.Electron, objects['muons'], 0.05)
+      electron_muon_dr: delta_r_higher(events.Electron, objects['muons'], 0.4)
   leptons:
-    field: select_zzto4l_leptons
+    field: select_hww_leptons
     cuts: null
-  jets:
+  ll_pairs:
+    field: select_hww_pairs
+    cuts: 
+      opposite_charge: (objects['ll_pairs'].l1.charge + objects['ll_pairs'].l2.charge == 0)
+      mass_range: ((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass > 12)
+  cjets:
     field: events.Jet
     cuts:
       min_pt: events.Jet.pt > 20
       abseta: np.abs(events.Jet.eta) < 2.5
       jet_id: tightlepveto
-      jet_lepton_dr: delta_r_mask(events.Jet, objects['leptons'], 0.4)
-  ll_pairs:
-    field: select_zzto4l_ll_pairs
-    cuts:
-      opposite_charge_same_flavor: (objects['ll_pairs'].l1.pdgId + objects['ll_pairs'].l2.pdgId == 0)
-      mass_range: ((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass > 12) & ((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass < 120)
-  zz_pairs:
-    field: select_zzto4l_zzpairs
-    cuts:
-      mass: (objects['zz_pairs'].z1.p4 + objects['zz_pairs'].z2.p4).mass > 70
-  zz_candidate:
-    field: select_zzto4l_zzcandidate
+      jet_particlenet_c: medium
+      jet_lepton_dr: delta_r_higher(events.Jet, objects['leptons'], 0.4)
+  candidate_jet:
+    field: select_candidate_cjet
+    cuts: null
+  met:
+    field: events.PuppiMET
+    cuts: null
+  mTll:
+    field: select_hww_mTll
+    cuts: null
+  mTl1:
+    field: select_hww_mTl1
+    cuts: null
+  mTl2: 
+    field: select_hww_mTl2
     cuts: null
 event_selection:
   selections:
     trigger: get_trigger_mask(events, hlt_paths, dataset_key)
     atleast_one_goodvertex: events.PV.npvsGood > 0
     lumimask: get_lumi_mask(events, goldenjson)
-    atleast_one_zz: ak.num(objects['zz_pairs']) > 0
+    met_filters: get_metfilters_mask(events, year)
+    met_30: objects['met'].pt > 30
+    one_electron: ak.num(objects['electrons']) == 1
+    one_muon: ak.num(objects['muons']) == 1
+    atleast_onejet: ak.num(objects['cjets']) > 0
   categories:
     base:
       - atleast_one_goodvertex
       - lumimask
+      - met_filters
       - trigger
-      - atleast_one_zz
+      - met_30
+      - one_electron
+      - one_muon
 histogram_config:
   add_syst_axis: true
   add_weight: true
   axes:
-    z1_lepton1_pt:
+    met:
       type: Regular
       bins: 50
-      start: 5
-      stop: 300
-      label: $p_T(\ell_1^{Z_1})$ [GeV]
-      expression: objects['zz_candidate'].z1.l1.pt
-    z1_lepton1_eta:
-      type: Regular
-      bins: 50
-      start: -2.5
-      stop: 2.5
-      label: $\eta(\ell_1^{Z_1})$
-      expression: objects['zz_candidate'].z1.l1.eta
-    z1_lepton1_phi:
-      type: Regular
-      bins: 50
-      start: -3.14159
-      stop: 3.14159
-      label: $\phi((\ell_1^{Z_1}))$
-      expression: objects['zz_candidate'].z1.l1.phi
-    z1_lepton2_pt:
-      type: Regular
-      bins: 50
-      start: 5
-      stop: 300
-      label: $p_T(\ell_2^{Z_1})$ [GeV]
-      expression: objects['zz_candidate'].z1.l2.pt
-    z1_lepton2_eta:
-      type: Regular
-      bins: 50
-      start: -2.5
-      stop: 2.5
-      label: $\eta(\ell_2^{Z_1})$
-      expression: objects['zz_candidate'].z1.l2.eta
-    z1_lepton2_phi:
-      type: Regular
-      bins: 50
-      start: -3.14159
-      stop: 3.14159
-      label: $\phi((\ell_2^{Z_1}))$
-      expression: objects['zz_candidate'].z1.l2.phi
-    z1_pt:
-      type: Regular
-      bins: 100
-      start: 0
+      start: 45
       stop: 500
-      label: $p_T(Z_1)$ [GeV]
-      expression: objects['zz_candidate'].z1.p4.pt
-    z1_mass:
-      type: Regular
-      bins: 54
-      start: 12
-      stop: 120
-      label: $m(Z_1)$ [GeV]
-      expression: objects['zz_candidate'].z1.p4.mass
-    z2_lepton1_pt:
-      type: Regular
-      bins: 50
-      start: 5
-      stop: 300
-      label: $p_T(\ell_1^{Z_2})$ [GeV]
-      expression: objects['zz_candidate'].z2.l1.pt
-    z2_lepton1_eta:
-      type: Regular
-      bins: 50
-      start: -2.5
-      stop: 2.5
-      label: $\eta(\ell_1^{Z_2})$
-      expression: objects['zz_candidate'].z2.l1.eta
-    z2_lepton1_phi:
+      label: $p_T^{miss}$ [GeV]
+      expression: objects['met'].pt
+    met_phi:
       type: Regular
       bins: 50
       start: -3.14159
       stop: 3.14159
-      label: $\phi((\ell_1^{Z_2}))$
-      expression: objects['zz_candidate'].z2.l1.phi
-    z2_lepton2_pt:
+      label: $\phi(p_T^{miss})$ [GeV]
+      expression: objects['met'].phi
+    met_raw:
       type: Regular
       bins: 50
-      start: 5
-      stop: 300
-      label: $p_T(\ell_2^{Z_2})$ [GeV]
-      expression: objects['zz_candidate'].z2.l2.pt
-    z2_lepton2_eta:
-      type: Regular
-      bins: 50
-      start: -2.5
-      stop: 2.5
-      label: $\eta(\ell_2^{Z_2})$
-      expression: objects['zz_candidate'].z2.l2.eta
-    z2_lepton2_phi:
-      type: Regular
-      bins: 50
-      start: -3.14159
-      stop: 3.14159
-      label: $\phi((\ell_2^{Z_2}))$
-      expression: objects['zz_candidate'].z2.l2.phi
-    z2_pt:
-      type: Regular
-      bins: 100
-      start: 0
+      start: 45
       stop: 500
-      label: $p_T(Z_2)$ [GeV]
-      expression: objects['zz_candidate'].z2.p4.pt
-    z2_mass:
-      type: Regular
-      bins: 54
-      start: 12
-      stop: 120
-      label: $m(Z_2)$ [GeV]
-      expression: objects['zz_candidate'].z2.p4.mass
-    zz_mass:
-      type: Regular
-      bins: 66
-      start: 70
-      stop: 400
-      label: $m_{4\ell}$ [GeV]
-      expression: (objects['zz_candidate'].z1.p4 + objects['zz_candidate'].z2.p4).mass
-    zz_pt:
-      type: Regular
-      bins: 40
-      start: 0
-      stop: 400
-      label: $pT_{4\ell}$ [GeV]
-      expression: (objects['zz_candidate'].z1.p4 + objects['zz_candidate'].z2.p4).pt
-    zz_eta:
+      label: Raw $p_T^{miss}$ [GeV]
+      expression: objects['met'].pt_raw
+    met_phi_raw:
       type: Regular
       bins: 50
-      start: -5
-      stop: 5
-      label: $m_{4\ell}$ [GeV]
-      expression: (objects['zz_candidate'].z1.p4 + objects['zz_candidate'].z2.p4).eta
-    zz_flavor:
-      type: IntCategory
-      categories:
-        - 44
-        - 48
-        - 52
-      label: ZZflavor
-      expression: np.abs(objects['zz_candidate'].z1.l1.pdgId) +
-        np.abs(objects['zz_candidate'].z1.l2.pdgId) +
-        np.abs(objects['zz_candidate'].z2.l1.pdgId) +
-        np.abs(objects['zz_candidate'].z2.l2.pdgId)
+      start: -3.14159
+      stop: 3.14159
+      label: Raw $\phi(p_T^{miss})$ [GeV]
+      expression: objects['met'].phi_raw
+    lepton1_pt:
+      type: Regular
+      bins: 50
+      start: 15
+      stop: 300
+      label: $p_T^{\ell_1}$ [GeV]
+      expression: objects["ll_pairs"].l1.pt
+    lepton2_pt:
+      type: Regular
+      bins: 50
+      start: 5
+      stop: 300
+      label: $p_T^{\ell_2}$ [GeV]
+      expression: objects["ll_pairs"].l2.pt
+    mtl1:
+      type: Regular
+      bins: 50
+      start: 15
+      stop: 300
+      label: $m_T^{\ell_1}$ [GeV]
+      expression: objects['mTl1']
+    mtl2:
+      type: Regular
+      bins: 50
+      start: 15
+      stop: 300
+      label: $m_T^{\ell_2}$ [GeV]
+      expression: objects['mTl2']
+    mtll:
+      type: Regular
+      bins: 50
+      start: 15
+      stop: 300
+      label: $m_T^{\ell \ell}$ [GeV]
+      expression: objects['mTll']
     jet_pt:
       type: Regular
       bins: 50
       start: 20
       stop: 500
-      label: $p_T(j)$ [GeV]
-      expression: objects['jets'].pt
+      label: Candidate c-jet $p_T$ [GeV]
+      expression: objects['candidate_cjet'].pt
     jet_eta:
       type: Regular
       bins: 50
       start: -2.4
       stop: 2.4
-      label: $\eta(j)$
-      expression: objects['jets'].eta
+      label: Candidate c-jet $\eta$
+      expression: objects['candidate_cjet'].eta
     jet_phi:
       type: Regular
       bins: 50
       start: -3.14159
       stop: 3.14159
-      label: $\phi(j)$
-      expression: objects['jets'].phi
+      label: Candidate c-jet $\phi$
+      expression: objects['candidate_cjet'].phi
     jet_multiplicity:
       type: IntCategory
       categories:
@@ -254,95 +185,34 @@ histogram_config:
         - 13
         - 14
         - 15
-      label: $N(j)$
-      expression: ak.num(objects['jets'])
-    leadingjet_cvsl:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading Jet CvsL
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvL
-    leadingjet_cvsb:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading Jet CvsB
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvB
-    leadingjet_flavour:
+      label: c-jets multiplicity
+      expression: ak.num(objects['cjets'])
+    jet_flavour:
       type: IntCategory
       categories:
         - 0
         - 4
         - 5
-      label: Leading Jet HadronFlavour
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].hadronFlavour
-    subleadingjet_cvsl:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Subleading Jet CvsL
-      expression: ak.pad_none(objects['jets'], target=2)[:, 1].btagPNetCvL
-    subleadingjet_cvsb:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Subleading Jet CvsB
-      expression: ak.pad_none(objects['jets'], target=2)[:, 1].btagPNetCvB
-    subleadingjet_flavour:
-      type: IntCategory
-      categories:
-        - 0
-        - 4
-        - 5
-      label: Subleading Jet HadronFlavour
-      expression: ak.pad_none(objects['jets'], target=2)[:, 1].hadronFlavour
+      label: c-jets HadronFlavour
+      expression: objects['cjets'].hadronFlavour
   layout:
-    z1_lepton1_pt:
-      - z1_lepton1_pt
-    z1_lepton1_eta:
-      - z1_lepton1_eta
-    z1_lepton2_pt:
-      - z1_lepton2_pt
-    z1_lepton2_eta:
-      - z1_lepton2_eta
-    z1_pt:
-      - z1_pt
-    z1_mass:
-      - z1_mass
-    z2_lepton1_pt:
-      - z2_lepton1_pt
-    z2_lepton1_eta:
-      - z2_lepton1_eta
-    z2_lepton2_pt:
-      - z2_lepton2_pt
-    z2_lepton2_eta:
-      - z2_lepton2_eta
-    z2_pt:
-      - z2_pt
-    z2_mass:
-      - z2_mass
-    zz:
-      - zz_mass
-      - zz_pt
-      - zz_eta
-      - zz_flavor
-    jet_pt:
+    met:
+      - met
+      - met_phi
+      - met_raw
+      - met_phi_raw
+    lepton:
+      - lepton1_pt
+      - lepton2_pt
+    mass:
+      - mtl1
+      - mtl2
+      - mtll
+    candidate_jet:
       - jet_pt
-    jet_eta:
       - jet_eta
-    jet_phi:
       - jet_phi
     jet_multiplicity:
       - jet_multiplicity
-    leading_jet:
-      - leadingjet_flavour
-      - leadingjet_cvsb
-      - leadingjet_cvsl
-    subleading_jet:
-      - subleadingjet_flavour
-      - subleadingjet_cvsb
-      - subleadingjet_cvsl
+    jet_flavour:
+      - jet_flavour
