@@ -141,11 +141,12 @@ class ObjectSelector:
         self.objects["ll_pairs"].pt = (
             self.objects["ll_pairs"].l1.pt + self.objects["ll_pairs"].l2.pt
         )
-        
-        
-    # def select_hww_pTll(self):
-    #     self.objects["ll_pair"] = self.objects["ll_pairs"].l1 + self.objects["ll_pairs"].l2
-    #     self.objects["pTll"] = self.objects["ll_pair"].pt
+        self.objects["mll"] = (
+            (self.objects["ll_pairs"].l1 + self.objects["ll_pairs"].l2).mass
+        )
+        self.objects["ptll"] = (
+            (self.objects["ll_pairs"].l1 + self.objects["ll_pairs"].l2).pt
+        )
         
     def select_hww_mTll(self):
         self.objects["mTll"] = transverse_mass(self.objects["ll_pairs"].l1+self.objects["ll_pairs"].l2, self.objects["met"])
