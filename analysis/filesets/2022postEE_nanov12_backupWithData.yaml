@@ -1,3 +1,48 @@
+MuonE:
+  era: E
+  query: Muon/Run2022E-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+MuonF:
+  era: F
+  query: Muon/Run2022F-22Sep2023-v2/NANOAOD
+  process: Data
+  xsec: None
+MuonG:
+  era: G
+  query: Muon/Run2022G-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+MuonEGE:
+  era: E
+  query: MuonEG/Run2022E-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+MuonEGF:
+  era: F
+  query: MuonEG/Run2022F-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+MuonEGG:
+  era: G
+  query: MuonEG/Run2022G-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+EGammaE:
+  era: E
+  query: EGamma/Run2022E-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+EGammaF:
+  era: F
+  query: EGamma/Run2022F-22Sep2023-v1/NANOAOD
+  process: Data
+  xsec: None
+EGammaG:
+  era: G
+  query: EGamma/Run2022G-22Sep2023-v2/NANOAOD
+  process: Data
+  xsec: None
 TTto2L2Nu:
   era: MC
   query: TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
@@ -190,7 +235,7 @@ WGtoLNuG-PTG-10to100:
   xsec: 662.2
 WGtoLNuG-PTG-100to200:
   era: MC
-  query: WGtoLNuG-1Jets_PTG-100to200_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
+  query: WGtoLNuG-1Jets_PTG-100to200_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EEMiniAODv4-130X_mcRun3_2022_realistic_postEE_v6-v2/MINIAODSIM
   process: Diboson
   xsec: 2.221
 WGtoLNuG-PTG-200to400:
@@ -228,23 +273,4 @@ WtoLNu-2Jets:
   query: WtoLNu-2Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
   process: V+jets
   xsec: 67710.0
-DYto2L_2Jets_50:
-  era: MC
-  query: DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: DY+Jets
-  xsec: 6688.0
-DYto2L_2Jets_10to50:
-  era: MC
-  query: DYto2L-2Jets_MLL-10to50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: DY+Jets
-  xsec: 20950.0
-GluGluHto2Wto2L2Nu:
-  era: MC
-  query: GluGluHto2Wto2L2Nu_M-125_TuneCP5_13p6TeV_powheg-jhugen752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: ggH
-  xsec: 23.12
-VBFHto2Wto2L2Nu:
-  era: MC
-  query: VBFHto2Wto2L2Nu_M-125_TuneCP5_13p6TeV_powheg-jhugen752-pythia8/Run3Summer22EENanoAODv12-130X_mcRun3_2022_realistic_postEE_v6-v2/NANOAODSIM
-  process: VBF
-  xsec: 4.201
+
