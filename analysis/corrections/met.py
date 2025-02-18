@@ -2,6 +2,7 @@ import correctionlib
 import numpy as np
 import awkward as ak
 
+
 def apply_met_phi_corrections(
     events: ak.Array,
     is_mc: bool,
@@ -9,6 +10,7 @@ def apply_met_phi_corrections(
 ):
     """
     Apply MET phi modulation corrections
+
     Parameters:
     -----------
         events:
@@ -17,9 +19,14 @@ def apply_met_phi_corrections(
             True if dataset is MC
         year:
             Year of the dataset  {'2022preEE', '2022postEE'}
+
     Returns:
     --------
         corrected MET pt and phi
+
+
+    Docs: (from https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETRun2Corrections#xy_Shift_Correction_MET_phi_modu)
+        The xy-Shift correction reduces the MET phi modulation. The distribution of true MET is independent of phi because of the rotational symmetry of the collisions around the beam axis. However, we observe that the reconstructed MET does depend on phi. The MET phi distribution has roughly a sinusoidal curve with the period of 2pi. The possible causes of the modulation include anisotropic detector responses, inactive calorimeter cells or tracking regions, the detector misalignment, the displacement of the beam spot. The amplitude of the modulation increases roughly linearly with the number of the pile-up interactions. We can reduce the amplitude of the phi modulation by shifting the origin of the coordinate in the transverse momentum plane as a function of different particle species and in bins of eta.
     """
     cset = correctionlib.CorrectionSet.from_file(
         "analysis/data/met_xy_corrections.json"

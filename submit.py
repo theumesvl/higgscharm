@@ -1,11 +1,13 @@
 import json
 import yaml
+import uproot
 import time
 import pickle
 import argparse
 from coffea import processor
 from humanfriendly import format_timespan
 from coffea.nanoevents import NanoAODSchema
+from analysis.configs import ProcessorConfigBuilder
 from analysis.processors.ztoee import ZToEEProcessor
 from analysis.processors.ztomumu import ZToMuMuProcessor
 from analysis.processors.zzto4l import ZZTo4LProcessor
@@ -13,6 +15,7 @@ from analysis.processors.WWtoMuEle import WWtoMuEleProcessor
 
 
 def main(args):
+    # execute processor
     processors = {
         "ztomumu": ZToMuMuProcessor(year=args.year),
         "ztoee": ZToEEProcessor(year=args.year),
@@ -29,10 +32,30 @@ def main(args):
     )
     exec_time = format_timespan(time.monotonic() - t0)
     print(f"Execution time: {exec_time}")
-    save_path = f"{args.output_path}/{args.year}_{args.dataset}"
+    # save metadata (sumw, cutflow, ...)
+    save_path = f"{args.output_path}/{args.dataset}"
     with open(f"{save_path}.pkl", "wb") as handle:
-        pickle.dump(out, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
+        pickle.dump(out["metadata"], handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # save histograms
+    config_builder = ProcessorConfigBuilder(processor=args.processor, year=args.year)
+    processor_config = config_builder.build_processor_config()
+    categories = processor_config.event_selection["categories"]
+    histograms = out["histograms"]
+    with uproot.recreate(f"{save_path}.root") as f:
+        for category in categories:
+            for histogram in histograms.values():
+                category_histogram = histogram[{"category": category}]
+                variables = [
+                    v for v in category_histogram.axes.name if v != "variation"
+                ]
+                for variable in variables:
+                    for syst_var in category_histogram.axes["variation"]:
+                        variation_histogram = category_histogram[
+                            {"variation": syst_var}
+                        ]
+                        f[f"{category}_{variable}_{syst_var}"] = (
+                            variation_histogram.project(variable)
+                        )
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -40,14 +63,13 @@ if __name__ == "__main__":
         "--processor",
         dest="processor",
         type=str,
-        default="ztomumu",
-        help="processor to be used {ztomumu, ztoee}",
+        default="WWtoMuEle",
+        help="processor to be used {ztomumu, ztoee, zzto4l, WWtoMuEle}",
     )
     parser.add_argument(
         "--dataset",
         dest="dataset",
         type=str,
-        default="",
         help="dataset",
     )
     parser.add_argument(
@@ -60,7 +82,6 @@ if __name__ == "__main__":
         "--year",
         dest="year",
         type=str,
-        default="",
         help="year of the data {2022preEE, 2022postEE}",
     )
     parser.add_argument(
@@ -70,4 +91,5 @@ if __name__ == "__main__":
         help="output path",
     )
     args = parser.parse_args()
+
     main(args)

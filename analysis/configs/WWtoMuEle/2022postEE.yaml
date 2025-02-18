@@ -66,9 +66,16 @@ event_selection:
     lumimask: get_lumi_mask(events, goldenjson)
     met_filters: get_metfilters_mask(events, year)
     met_30: objects['met'].pt > 30
+    met_45: objects['met'].pt > 45
     one_electron: ak.num(objects['electrons']) == 1
     one_muon: ak.num(objects['muons']) == 1
-    atleast_onejet: ak.num(objects['cjets']) > 0
+    atleast_onecjet: ak.num(objects['cjets']) > 0
+    atleast_two_cjets: ak.num(objects['cjets']) > 1
+    transverse_mass_signal: ak.all((objects["mTl2"] > 30) & (objects["mTll"] > 60), axis=1)
+    transverse_mass_top: ak.all((objects["mTl2"] > 30) & (objects["mTll"] <= 60), axis=1)
+    dilepton_mass_signal: ak.all((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass <= 72, axis=1)
+    dilepton_mass_top: ak.all((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass > 72, axis=1)
+    dilepton_pt: ((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).pt > 30)
   categories:
     base:
       - atleast_one_goodvertex
@@ -78,6 +85,19 @@ event_selection:
       - met_30
       - one_electron
       - one_muon
+    topCR:
+      - atleast_one_goodvertex
+      - lumimask
+      - met_filters
+      - trigger
+      - met_45
+      - one_electron
+      - one_muon
+      - atleast_onecjet
+      - atleast_two_cjets
+      - dilepton_mass_top
+      - transverse_mass_top
+      - dilepton_pt
 histogram_config:
   add_syst_axis: true
   add_weight: true
@@ -86,7 +106,7 @@ histogram_config:
       type: Regular
       bins: 50
       start: 30
-      stop: 500
+      stop: 600
       label: $p_T^{miss}$ [GeV]
       expression: objects['met'].pt
     met_phi:
@@ -100,7 +120,7 @@ histogram_config:
       type: Regular
       bins: 50
       start: 30
-      stop: 500
+      stop: 600
       label: Raw $p_T^{miss}$ [GeV]
       expression: objects['met'].pt_raw
     met_phi_raw:
@@ -114,28 +134,28 @@ histogram_config:
       type: Regular
       bins: 50
       start: 5
-      stop: 300
+      stop: 500
       label: $p_T^{\ell_1}$ [GeV]
       expression: objects["ll_pairs"].l1.pt
     lepton2_pt:
       type: Regular
       bins: 50
       start: 5
-      stop: 300
+      stop: 500
       label: $p_T^{\ell_2}$ [GeV]
       expression: objects["ll_pairs"].l2.pt
     lepton1_eta:
       type: Regular
       bins: 50
-      start: -2.4
-      stop: 2.4
+      start: -2.5
+      stop: 2.5
       label: $\eta^{\ell_1}$ 
       expression: objects["ll_pairs"].l1.eta
     lepton2_eta:
       type: Regular
       bins: 50
-      start: -2.4
-      stop: 2.4
+      start: -2.5
+      stop: 2.5
       label: $\eta^{\ell_2}$ 
       expression: objects["ll_pairs"].l2.eta
     lepton1_phi:
@@ -156,35 +176,35 @@ histogram_config:
       type: Regular
       bins: 50
       start: 0
-      stop: 300
+      stop: 500
       label: $m_{\ell \ell}$ 
       expression: objects["mll"]
     mtl1:
       type: Regular
       bins: 50
       start: 0
-      stop: 300
+      stop: 500
       label: $m_T^{\ell_1}$ [GeV]
       expression: objects['mTl1']
     mtl2:
       type: Regular
       bins: 50
       start: 0
-      stop: 300
+      stop: 500
       label: $m_T^{\ell_2}$ [GeV]
       expression: objects['mTl2']
     mtll:
       type: Regular
       bins: 50
       start: 0
-      stop: 300
+      stop: 500
       label: $m_T^{\ell \ell}$ [GeV]
       expression: objects['mTll']
     jet_pt:
       type: Regular
       bins: 50
       start: 20
-      stop: 500
+      stop: 800
       label: Candidate c-jet $p_T$ [GeV]
       expression: objects['candidate_cjet'].pt
     jet_eta:

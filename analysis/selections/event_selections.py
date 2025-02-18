@@ -24,6 +24,7 @@ def get_trigger_match_mask(events, leptons, hlt_paths):
     mask = trigger_match_mask(events, leptons, hlt_paths)
     return ak.sum(mask, axis=-1) > 0
 
+
 def get_metfilters_mask(events, year):
     with importlib.resources.path("analysis.data", "metfilters.json") as path:
         with open(path, "r") as handle:

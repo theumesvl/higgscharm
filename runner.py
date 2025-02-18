@@ -1,58 +1,25 @@
 import os
 import argparse
 
-data_samples = {
-    "ztoee": {
-        "2022preEE": ["EGammaC", "EGammaD"],
-        "2022postEE": ["EGammaE", "EGammaF", "EGammaG"],
-    },
-    "ztomumu": {
-        "2022preEE": ["MuonC", "MuonD"],
-        "2022postEE": ["MuonE", "MuonF", "MuonG"],
-    },
-    "zzto4l": {
-        "2022preEE": ["MuonC", "MuonD", "MuonEGC", "MuonEGD", "EGammaC", "EGammaD"],
-        "2022postEE": [
-            "MuonE",
-            "MuonF",
-            "MuonG",
-            "MuonEGE",
-            "MuonEGF",
-            "MuonEGG",
-            "EGammaE",
-            "EGammaF",
-            "EGammaG",
-        ],
-    },
-    "WWtoMuEle": {
-        "2022preEE": ["MuonC", "MuonD", "MuonEGC", "MuonEGD", "EGammaC", "EGammaD"],
-        "2022postEE": [
-           # "MuonE",
-           # "MuonF",
-           # "MuonG",
-           # "MuonEGE",
-           # "MuonEGF",
-           # "MuonEGG",
-           # "EGammaE",
-           # "EGammaF",
-           # "EGammaG",
-        ],
-    },
-}
-mc_samples = {
-    "ztoee": [
-        # DY+jets
-        "DYto2L_2Jets_50",
-        "DYto2L_2Jets_10to50",
-        # Diboson
-        "WW",
-        "WZ",
-        "ZZ",
-        # Ttbar
-        "TTto4Q",
-        "TTto2L2Nu",
-        "TTtoLNu2Q",
-        # SingleTop
+
+ERAS = {"2022preEE": ["C", "D"], "2022postEE": ["E", "F", "G"]}
+PRIMARY_DATASETS = ["Muon", "MuonEG", "EGamma"]
+DATA_SAMPLES = {}
+for year, eras in ERAS.items():
+    DATA_SAMPLES[year] = {}
+    for primary_dataset in PRIMARY_DATASETS:
+        DATA_SAMPLES[year][primary_dataset] = []
+        for era in eras:
+            DATA_SAMPLES[year][primary_dataset].append(f"{primary_dataset}{era}")
+
+            
+MC_DATASETS = {
+    "ttbar": [
+        "TTto2L2Nu", 
+        "TTto4Q", 
+        "TTtoLNu2Q"
+    ],
+    "singletop": [
         "TbarWplusto2L2Nu",
         "TWminusto2L2Nu",
         "TWminustoLNu2Q",
@@ -61,68 +28,14 @@ mc_samples = {
         "TWminusto4Q",
         "TbarBQ",
         "TBbarQ",
+        "TbarQto2Q",
+        "TbarQtoLNu",
+        "TQbarto2Q",
+        "TQbartoLNu",
+        "TbarBtoLminusNuB",
+        "TBbartoLplusNuBbar",
     ],
-    "ztomumu": [
-        # DY+jets
-        "DYto2L_2Jets_50",
-        "DYto2L_2Jets_10to50",
-        # Diboson
-        "WW",
-        "WZ",
-        "ZZ",
-        # Ttbar
-        "TTto4Q",
-        "TTto2L2Nu",
-        "TTtoLNu2Q",
-        # SingleTop
-        "TbarWplusto2L2Nu",
-        "TWminusto2L2Nu",
-        "TWminustoLNu2Q",
-        "TbarWplusto4Q",
-        "TbarWplustoLNu2Q",
-        "TWminusto4Q",
-        "TbarBQ",
-        "TBbarQ",
-    ],
-    "zzto4l": [
-        # SIGNAL
-        "bbH_Hto2Zto4L",
-        "GluGluHtoZZto4L",
-        "TTH_Hto2Z",
-        "VBFHto2Zto4L",
-        "WminusH_Hto2Zto4L",
-        "WplusH_Hto2Zto4L",
-        "ZHto2Zto4L",
-        # BACKGROUND
-        "GluGluToContinto2Zto2E2Mu",
-        "GluGluToContinto2Zto2E2Tau",
-        "GluGluToContinto2Zto2Mu2Tau",
-        "GluGlutoContinto2Zto4E",
-        "GluGlutoContinto2Zto4Mu",
-        "GluGlutoContinto2Zto4Tau",
-        "ZZto4L",
-    ],
-    "WWtoMuEle": [
-        # Ttbar
-        #"TTto2L2Nu",
-        #"TTto4Q",
-        #"TTtoLNu2Q",
-        # SingleTop
-        #"TbarWplusto2L2Nu",
-        #"TWminusto2L2Nu",
-        #"TWminustoLNu2Q",
-        #"TbarWplusto4Q",
-        #"TbarWplustoLNu2Q",
-        #"TWminusto4Q",
-        #"TbarBQ",
-        #"TBbarQ",
-        #"TbarQto2Q",
-        #"TbarQtoLNu",
-        #"TQbarto2Q",
-        #"TQbartoLNu",
-        #"TbarBtoLminusNuB",
-        #"TBbartoLplusNuBbar",
-        # VV/Diboson
+    "diboson": [
         #"WW",
         "ZZto2L2Nu",
         "ZZto2Nu2Q",
@@ -140,18 +53,59 @@ mc_samples = {
         "WGtoLNuG-PTG-200to400",
         "WGtoLNuG-PTG-400to600",
         "WGtoLNuG-PTG-600",
-        # V+jets
+        #"WZ", 
+        #"ZZ"
+    ],
+    "DY+jets": [
+        "DYto2L_2Jets_50", 
+        "DYto2L_2Jets_10to50"
+    ],
+    "V+jets": [
         #"WtoLNu-2Jets_0J",
         #"WtoLNu-2Jets_1J",
         #"WtoLNu-2Jets_2J",
         "WtoLNu-2Jets",
-        # DY+Jets
-        "DYto2L_2Jets_50",
-        "DYto2L_2Jets_10to50",
-        # Higgs prod
+    ],
+    "higgs_bkg_WW": [
         "GluGluHto2Wto2L2Nu",
         "VBFHto2Wto2L2Nu",
     ],
+    "higgs": [
+        "bbH_Hto2Zto4L",
+        "GluGluHtoZZto4L",
+        "TTH_Hto2Z",
+        "VBFHto2Zto4L",
+        "WminusH_Hto2Zto4L",
+        "WplusH_Hto2Zto4L",
+        "ZHto2Zto4L",
+    ],
+    "ggtozz": [
+        "GluGluToContinto2Zto2E2Mu",
+        "GluGluToContinto2Zto2E2Tau",
+        "GluGluToContinto2Zto2Mu2Tau",
+        "GluGlutoContinto2Zto4E",
+        "GluGlutoContinto2Zto4Mu",
+        "GluGlutoContinto2Zto4Tau",
+    ],
+    "qqtozz": ["ZZto4L"],
+}
+DATASETS = {
+    "WWtoMuEle": {
+        "mc": ["ttbar", "singletop", "diboson","DY+jets","V+jets","higgs_bkg_WW"],
+        "data": ["Muon", "MuonEG", "EGamma"],
+    },
+    "zzto4l": {
+        "mc": ["higgs", "ggtozz", "qqtozz"],
+        "data": ["Muon", "MuonEG", "EGamma"],
+    },
+    "ztoee": {
+        "mc": ["ttbar", "singletop", "diboson"], 
+        "data": ["EGamma"]
+    },
+    "ztomumu": {
+        "mc": ["ttbar", "singletop", "diboson"], 
+        "data": ["EGamma"]
+    },
 }
 
 
@@ -161,15 +115,14 @@ if __name__ == "__main__":
         "--processor",
         dest="processor",
         type=str,
-        default="ztomumu",
-        help="processor to be used {ztomumu, ztoee, zto4l} (default ztomumu)",
+        default="WWtoMuEle",
+        help="processor to be used {ztomumu, ztoee, zzto4l, WWtoMuEle} (default WWtoMuEle)",
     )
     parser.add_argument(
         "--year",
         dest="year",
         type=str,
-        default="2022postEE",
-        help="dataset year {2022preEE, 2022postEE} (default 2022postEE)",
+        help="dataset year {2022preEE, 2022postEE}",
     )
     parser.add_argument(
         "--nfiles",
@@ -189,14 +142,21 @@ if __name__ == "__main__":
         help="Enable saving outputs to /eos",
     )
     args = parser.parse_args()
-
-    datasets = (
-        mc_samples[args.processor] + data_samples[args.processor][args.year]
-    )
+    # get datasets for processor and year
+    mc = [
+        sample
+        for dataset in DATASETS[args.processor]["mc"]
+        for sample in MC_DATASETS[dataset]
+    ]
+    data = [
+        sample
+        for dataset in DATASETS[args.processor]["data"]
+        for sample in DATA_SAMPLES[args.year][dataset]
+    ]
+    datasets = mc + data
+    # submit job for each dataset
     for dataset in datasets:
         cmd = f"python3 submit_condor.py --processor {args.processor} --year {args.year} --dataset {dataset} --nfiles {args.nfiles}"
         if args.submit:
             cmd += " --submit"
-        if args.eos:
-            cmd += " --eos"
-        os.system(cmd)
+

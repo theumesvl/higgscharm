@@ -17,6 +17,7 @@ class Paths:
         self,
         processor: str,
         year: str,
+        dataset: str,
     ) -> pathlib.Path:
         """
         Safely return a path by creating the parent directories to avoid errors when writing to the path.
@@ -35,6 +36,7 @@ class Paths:
                 for elem in [
                     processor,
                     year,
+                    dataset,
                 ]
                 if elem is not None
             ]
