@@ -1,8 +1,12 @@
 import os
 
+# define processor and year to construct paths
+year = "2022postEE"
+processor = "WWtoMuEle"
+
 # Define paths
-sample_dir = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/WWtoMuEle/2022postEE"  # Condor logs directory
-output_dir = "/eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022postEE"  # Output directory with ROOT files
+sample_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/{processor}/{year}"  # Condor logs directory
+output_dir = f"/eos/user/t/tvanlaer/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
 expected_samples_file = "samples_list.txt"  # File with expected samples (if manually created)
 found_samples_file = "samples.txt"  # File to store detected sample names
 missing_samples_file = "missing_samples.txt"  # File to store missing samples
