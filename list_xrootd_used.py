@@ -7,18 +7,20 @@ processor = "WWtoMuEle"
 
 # Define the base directory
 base_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/{processor}/{year}"
-output_file = "xrootd_path_useds.txt"
+output_file = "xrootd_path_used.txt"
 
 # Regular expression to find XRootD paths
-xrootd_pattern = re.compile(r"root://[a-zA-Z0-9\-.]+:\d+/store/[^\s]+")
+xrootd_pattern = re.compile(r"root://[a-zA-Z0-9\-.]+(?:[:]\d+)?")
 
 # List to store found paths
 xrootd_paths = []
 
 # Iterate over each sample directory
 for sample_dir in sorted(os.listdir(base_dir)):
+    print(sample_dir)
     sample_path = os.path.join(base_dir, sample_dir)
-    
+    print(sample_dir)
+
     # Ensure it's a directory
     if not os.path.isdir(sample_path):
         continue
@@ -27,6 +29,7 @@ for sample_dir in sorted(os.listdir(base_dir)):
     for filename in os.listdir(sample_path):
         if filename.endswith(".sh"):
             sh_file_path = os.path.join(sample_path, filename)
+            print(sh_file_path)
             
             # Read the .sh file and extract XRootD paths
             with open(sh_file_path, "r") as f:
