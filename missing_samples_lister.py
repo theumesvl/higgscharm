@@ -1,6 +1,11 @@
 import os
 import re
 
+# username and first letter and extra optional path in which higgscharm package might be stored on afs (for eos it is assumed that higgscharm is directly in your home directory)
+extraPath = "/Hc"
+username = "tvanlaer"
+first_letter = username[0]
+
 # define processor and year to construct paths
 year = "2022postEE"
 processor = "WWtoMuEle"
@@ -9,11 +14,11 @@ processor = "WWtoMuEle"
 use_directory = True  # Set to False if using manually created text file
 
 # Define paths
-base_dir = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm"
-sample_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/{processor}/{year}"  # Condor logs directory
-output_dir = f"/eos/user/t/tvanlaer/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
-log_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/{processor}/{year}"  # Condor log directory
-filesets_path = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/analysis/filesets/make_filesets.py"
+base_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm"
+sample_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/condor/{processor}/{year}"  # Condor logs directory
+output_dir = f"/eos/user/{first_letter}/{username}/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
+log_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/condor/logs/{processor}/{year}"  # Condor log directory
+filesets_path = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/analysis/filesets/make_filesets.py"
 expected_samples_file = "samples_list.txt"  # File with expected samples (if manually created)
 found_samples_file = "samples.txt"  # File to store detected sample names
 missing_samples_file = "missing_samples.txt"  # File to store missing samples
