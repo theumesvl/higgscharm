@@ -5,16 +5,21 @@ import re
 year = "2022postEE"
 processor = "WWtoMuEle"
 
+# Switch between directory-based and file-based sample retrieval
+use_directory = True  # Set to False if using manually created text file
+
 # Define paths
+base_dir = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm"
 sample_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/{processor}/{year}"  # Condor logs directory
 output_dir = f"/eos/user/t/tvanlaer/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
 log_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/{processor}/{year}"  # Condor log directory
 expected_samples_file = "samples_list.txt"  # File with expected samples (if manually created)
 found_samples_file = "samples.txt"  # File to store detected sample names
 missing_samples_file = "missing_samples.txt"  # File to store missing samples
+storage_site_report_file = "storage_sites_report.txt"
 
 # dictionary matching storage site names to xrootd endpoints: xrootd name should start with "root://" and go till the next "//" of the file paths (not including the "//")
-storage_sites = {
+xrootd_to_site = {
     "root://cmseos.fnal.gov": "T3_US_FNALLPC",
     "root://cmsdcadisk.fnal.gov": "T1_US_FNAL_Disk",
     "root://xrootd-redir1-vanderbilt.sites.opensciencegrid.org:1094": "T2_US_Vanderbilt",
@@ -50,10 +55,8 @@ storage_sites = {
     "root://cmsxrootd.hep.wisc.edu:1094": "T2_US_Wisconsin",
     "root://cceos.ihep.ac.cn:1094": "T2_CN_Beijing",
     "root://redirector.t2.ucsd.edu:1095": "T2_US_UCSD",
-},
+}
 
-# Switch between directory-based and file-based sample retrieval
-use_directory = True  # Set to False if using manually created text file
 
 def get_samples_from_directory(sample_dir):
     """Retrieve sample names from Condor logs directory, extract base names and IDs, and save them to a file."""
@@ -110,10 +113,10 @@ def get_latest_error(log_dir, sample_name, sample_id):
 
     # Extract XRootD storage site endpoint
     xrootd_matches = re.findall(r"root://[a-zA-Z0-9\-.]+(?:[:]\d+)?", err_content)
-    print(xrootd_matches)
     xrootd_site = xrootd_matches[0] if xrootd_matches else ""
 
     return error_msg, xrootd_site
+
 
 def check_missing_samples(base_dir, log_dir, samples, missing_samples_file):
     """Checks which samples exist in the output directory and extracts errors for missing ones."""
@@ -140,6 +143,26 @@ def check_missing_samples(base_dir, log_dir, samples, missing_samples_file):
 
     print(f"Saved missing samples list with errors to {missing_samples_file}")
 
+    return missing_samples
+
+def generate_storage_site_report(missing_samples, xrootd_to_site, storage_site_report_file):
+    """Generate a report of all unique storage sites encountered that cause trouble."""
+    storage_sites = set()
+
+    for _, xrootd_site, _ in missing_samples:
+        if xrootd_site:  # Ensure the site is not empty
+            site_name = xrootd_to_site.get(xrootd_site, "Unknown site")  # Map XRootD to site name
+            storage_sites.add(site_name)
+
+    # Save storage site report
+    with open(storage_site_report_file, "w") as f:
+        f.write("Storage Site Name\n")
+        f.write("=================\n")
+        for site in sorted(storage_sites):
+            f.write(f"{site}\n")
+
+    print(f"Saved storage site report to {storage_site_report_file}")
+
 # Get samples based on the selected method
 if use_directory:
     detected_samples = get_samples_from_directory(sample_dir)
@@ -147,4 +170,7 @@ else:
     detected_samples = read_sample_list(expected_samples_file)
 
 # Check which samples are missing
-check_missing_samples(output_dir, log_dir, detected_samples, missing_samples_file)    
+missing_samples = check_missing_samples(output_dir, log_dir, detected_samples, missing_samples_file)    
+
+# Generate storage site report of troublesome storage sites
+generate_storage_site_report(missing_samples, xrootd_to_site, storage_site_report_file)
