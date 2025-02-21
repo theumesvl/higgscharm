@@ -1,13 +1,11 @@
 import re
+from pathlib import Path
 
-# username and first letter and optional extra path pieces in which the higgscharm package is stored
-extraPath = "/Hc"
-username = "tvanlaer"
-first_letter = username[0]
-
+# get base directory from whichscript is run
+base_dir = Path.cwd()
 
 # Path to make_filesets.py
-make_filesets_path = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/analysis/filesets/make_filesets.py" 
+make_filesets_path = f"{base_dir}/analysis/filesets/make_filesets.py" 
 
 def uncomment_storage_sites(file_path):
     """Uncomments all storage sites in make_filesets.py."""
