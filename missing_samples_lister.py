@@ -13,6 +13,7 @@ base_dir = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm"
 sample_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/{processor}/{year}"  # Condor logs directory
 output_dir = f"/eos/user/t/tvanlaer/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
 log_dir = f"/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/{processor}/{year}"  # Condor log directory
+filesets_path = "/afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/analysis/filesets/make_filesets.py"
 expected_samples_file = "samples_list.txt"  # File with expected samples (if manually created)
 found_samples_file = "samples.txt"  # File to store detected sample names
 missing_samples_file = "missing_samples.txt"  # File to store missing samples
@@ -163,6 +164,42 @@ def generate_storage_site_report(missing_samples, xrootd_to_site, storage_site_r
 
     print(f"Saved storage site report to {storage_site_report_file}")
 
+def get_faulty_sites(storage_sites_report_file):
+    """Reads faulty storage site names from storage_sites_report.txt."""
+    faulty_sites = []
+    try:
+        with open(storage_sites_report_file, "r") as f:
+            lines = f.readlines()
+            for line in lines[2:]:  # Skip the header lines
+                site = line.strip()
+                if site:
+                    faulty_sites.append(site)
+    except FileNotFoundError:
+        print(f"Warning: {storage_sites_report_file} not found. No sites will be commented out.")
+    return faulty_sites
+
+def comment_faulty_sites():
+    # get faulty site names
+    problematic_sites = get_faulty_sites(storage_site_report_file)
+
+    # Read the file
+    with open(filesets_path, "r") as f:
+        lines = f.readlines()
+
+    # Modify the lines by commenting out problematic storage sites
+    modified_lines = []
+    for line in lines:
+        if any(site in line for site in problematic_sites) and not line.lstrip().startswith("#"):
+            modified_lines.append("# " + line)  # Comment out the line
+        else:
+            modified_lines.append(line)
+
+    # Write back the modified file
+    with open(filesets_path, "w") as f:
+        f.writelines(modified_lines)
+
+    print(f"Commented out {len(problematic_sites)} problematic storage sites in {filesets_path}")
+
 # Get samples based on the selected method
 if use_directory:
     detected_samples = get_samples_from_directory(sample_dir)
@@ -174,3 +211,6 @@ missing_samples = check_missing_samples(output_dir, log_dir, detected_samples, m
 
 # Generate storage site report of troublesome storage sites
 generate_storage_site_report(missing_samples, xrootd_to_site, storage_site_report_file)
+
+# comment out the problematic sites in make_filesets.py 
+comment_faulty_sites()
