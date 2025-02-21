@@ -1,24 +1,25 @@
 import os
 import re
+from pathlib import Path
+from analysis.utils import make_output_directory
 
-# username and first letter and extra optional path in which higgscharm package might be stored on afs (for eos it is assumed that higgscharm is directly in your home directory)
-extraPath = "/Hc"
-username = "tvanlaer"
-first_letter = username[0]
+# get base directory from which script is run
+base_dir = Path.cwd()
 
 # define processor and year to construct paths
 year = "2022postEE"
 processor = "WWtoMuEle"
+username = "tvanlaer"
+first_letter = username[0]
 
 # Switch between directory-based and file-based sample retrieval
 use_directory = True  # Set to False if using manually created text file
 
 # Define paths
-base_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm"
-sample_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/condor/{processor}/{year}"  # Condor logs directory
+sample_dir = f"{base_dir}/condor/{processor}/{year}"  # Condor logs directory
 output_dir = f"/eos/user/{first_letter}/{username}/higgscharm/outputs/{processor}/{year}"  # Output directory with ROOT files
-log_dir = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/condor/logs/{processor}/{year}"  # Condor log directory
-filesets_path = f"/afs/cern.ch/user/{first_letter}/{username}{extraPath}/higgscharm/analysis/filesets/make_filesets.py"
+log_dir = f"{base_dir}/condor/logs/{processor}/{year}"  # Condor log directory
+filesets_path = f"{base_dir}/analysis/filesets/make_filesets.py"
 expected_samples_file = "samples_list.txt"  # File with expected samples (if manually created)
 found_samples_file = "samples.txt"  # File to store detected sample names
 missing_samples_file = "missing_samples.txt"  # File to store missing samples
@@ -44,7 +45,7 @@ xrootd_to_site = {
     "root://t3se01.psi.ch:1094": "T3_CH_PSI",
     "root://gaexrdoor.ciemat.es:1094": "T2_ES_CIEMAT",
     "root://xrootd-cms.infn.it:1194": "T2_IT_Pisa", # not sure
-    "root://k8s-redir.ultralight.org:1094": "T2_US_Caltech", #not sure
+    "root://k8s-redir.ultralight.org:1094": "T2_US_Caltech",
     "root://se01.indiacms.res.in": "T2_IN_TIFR",
     "root://cmsio2.rc.ufl.edu:1094": "T2_US_Florida",
     "root://t2dsk0011.cmsaf.mit.edu:1094": "T2_US_MIT",
@@ -54,13 +55,16 @@ xrootd_to_site = {
     "root://se.cis.gov.pl:1094": "T2_PL_Swierk",
     "root://cmsrm-cream01.roma1.infn.it": "T2_IT_Rome", # not sure
     "root://lyogrid07.in2p3.fr": "T3_FR_IPNL", # not sure
-    "root://deepthought.crc.nd.edu": "T3_US_NotreDame", # not sure
-    "root://ce04-lcg.cr.cnaf.infn.it": "T1_IT_CNAF_Disk", # not sure
+    "root://hactar01.crc.nd.edu": "T3_US_NotreDame",
+    "root://xrootd-cms.infn.it:1194": "T1_IT_CNAF_Disk",
     "root://osg-se.sprace.org.br:1094": "T2_BR_SPRACE",
     "root://storage01.lcg.cscs.ch:1096": "T2_CH_CSCS",
     "root://cmsxrootd.hep.wisc.edu:1094": "T2_US_Wisconsin",
     "root://cceos.ihep.ac.cn:1094": "T2_CN_Beijing",
     "root://redirector.t2.ucsd.edu:1095": "T2_US_UCSD",
+    "root://grid143.kfki.hu:1094": "T2_HU_Budapest",
+    "root://xrootd.hep.kbfi.ee:1094": "T2_EE_Estonia",
+    "root://cms-se0.kipt.kharkov.ua": "T2_UA_KIPT",
 }
 
 
