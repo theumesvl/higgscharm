@@ -29,7 +29,7 @@ storage_site_report_file = "storage_sites_report.txt"
 xrootd_to_site = {
     "root://cmseos.fnal.gov": "T3_US_FNALLPC",
     "root://cmsdcadisk.fnal.gov": "T1_US_FNAL_Disk",
-    "root://xrootd-redir1-vanderbilt.sites.opensciencegrid.org:1094": "T2_US_Vanderbilt",
+    "root://xrootd-vanderbilt.sites.opensciencegrid.org:1094": "T2_US_Vanderbilt",
     "root://eos.cms.rcac.purdue.edu": "T2_US_Purdue",
     "root://xrootd-local.unl.edu:1094": "T2_US_Nebraska",
     "root://dcache-cms-xrootd.desy.de:1094": "T2_DE_DESY",
@@ -65,6 +65,13 @@ xrootd_to_site = {
     "root://grid143.kfki.hu:1094": "T2_HU_Budapest",
     "root://xrootd.hep.kbfi.ee:1094": "T2_EE_Estonia",
     "root://cms-se0.kipt.kharkov.ua": "T2_UA_KIPT",
+    "root://xrootd-cmst1-door.pic.es:1094": "T1_ES_PIC_Disk",
+    "root://eos.grid.vbc.ac.at:1094": "T2_AT_Vienna",
+    "root://t2-xrdcms.lnl.infn.it:7070": "T2_IT_Legnaro",
+    "root://cms-t2-se01.sdfarm.kr:1094": "T2_KR_KISTI",
+    "root://eos01.grid.cyfronet.pl:1094": "T2_PL_Cyfronet",
+    "root://xroot02.ncg.ingrid.pt:1094": "T2_PT_NCG_Lisbon",
+    "root://se01.grid.nchc.org.tw": "T2_TW_NCHC",
 }
 
 
@@ -134,7 +141,8 @@ def check_missing_samples(base_dir, log_dir, samples, missing_samples_file):
 
     for sample_name, sample_id in samples:
         sample_dir = os.path.join(base_dir, sample_name)
-        sample_file = f"{sample_name}_{sample_id}.root"
+        #sample_file = f"{sample_name}_{sample_id}.root" # uncomment for checking root file output
+        sample_file = f"{sample_name}_{sample_id}.coffea" # uncomment for checking coffea file output
         file_path = os.path.join(sample_dir, sample_file)
 
         if os.path.exists(file_path):
@@ -146,10 +154,10 @@ def check_missing_samples(base_dir, log_dir, samples, missing_samples_file):
 
     # Save missing samples to file
     with open(missing_samples_file, "w") as f:
-        f.write(f"{'Sample':<80}{'XRootD Site':<40}{'Error Message'}\n")
+        f.write(f"{'Sample':<40}{'XRootD Site':<60}{'Error Message'}\n")
         f.write("="*140 + "\n")
         for sample, site, error in missing_samples:
-            f.write(f"{sample:<80}{site:<40}{error}\n")
+            f.write(f"{sample:<40}{site:<60}{error}\n")
 
     print(f"Saved missing samples list with errors to {missing_samples_file}")
 
