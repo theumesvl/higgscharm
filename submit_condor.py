@@ -42,6 +42,7 @@ def main(args):
             # with strings within the dictionary enclosed in double quotes.
             # we use json.dumps() to switch from single to double quotes within the dictionary
             f"--partition_fileset '{json.dumps(partition_fileset)}' "
+            f"--output_format {args['output_format']}"
         )
         submit_condor(args)
 
@@ -52,29 +53,26 @@ if __name__ == "__main__":
         "--processor",
         dest="processor",
         type=str,
-        default="ztomumu",
-        help="processor to be used {ztomumu, ztoee, zzto4l} (default ztomumu)",
+        help="processor to be used {ztomumu, ztoee, zzto4l, WWtoMuEle}",
     )
     parser.add_argument(
         "--dataset",
         dest="dataset",
         type=str,
-        default="",
         help="dataset name",
     )
     parser.add_argument(
         "--year",
         dest="year",
         type=str,
-        default="2022postEE",
-        help="dataset year {2022preEE, 2022postEE} (default 2022postEE)",
+        help="dataset year {2022preEE, 2022postEE}",
     )
     parser.add_argument(
         "--nfiles",
         dest="nfiles",
         type=int,
-        default=20,
-        help="number of root files to include in each dataset partition (default 20)",
+        default=10,
+        help="number of root files to include in each dataset partition (default 10)",
     )
     parser.add_argument(
         "--eos",
@@ -85,6 +83,12 @@ if __name__ == "__main__":
         "--submit",
         action="store_true",
         help="Enable Condor job submission. If not provided, it just builds condor files",
+    )
+    parser.add_argument(
+        "--output_format",
+        type=str,
+        default="coffea",
+        help="format of output histograms {root, coffea}",
     )
     args = parser.parse_args()
     main(args)

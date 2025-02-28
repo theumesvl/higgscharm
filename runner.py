@@ -115,8 +115,7 @@ if __name__ == "__main__":
         "--processor",
         dest="processor",
         type=str,
-        default="WWtoMuEle",
-        help="processor to be used {ztomumu, ztoee, zzto4l, WWtoMuEle} (default WWtoMuEle)",
+        help="processor to be used {ztomumu, ztoee, zzto4l, hww}",
     )
     parser.add_argument(
         "--year",
@@ -128,8 +127,8 @@ if __name__ == "__main__":
         "--nfiles",
         dest="nfiles",
         type=int,
-        default=20,
-        help="number of root files to include in each dataset partition (default 20)",
+        default=10,
+        help="number of root files to include in each dataset partition (default 10)",
     )
     parser.add_argument(
         "--submit",
@@ -140,6 +139,12 @@ if __name__ == "__main__":
         "--eos",
         action="store_true",
         help="Enable saving outputs to /eos",
+    )
+    parser.add_argument(
+        "--output_format",
+        type=str,
+        default="coffea",
+        help="format of output histograms {root, coffea}",
     )
     args = parser.parse_args()
     # get datasets for processor and year
@@ -156,7 +161,9 @@ if __name__ == "__main__":
     datasets = mc + data
     # submit job for each dataset
     for dataset in datasets:
-        cmd = f"python3 submit_condor.py --processor {args.processor} --year {args.year} --dataset {dataset} --nfiles {args.nfiles}"
+        cmd = f"python3 submit_condor.py --processor {args.processor} --year {args.year} --dataset {dataset} --nfiles {args.nfiles} --output_format {args.output_format}"
         if args.submit:
             cmd += " --submit"
-
+        if args.eos:
+            cmd += " --eos"
+        os.system(cmd)

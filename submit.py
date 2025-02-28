@@ -1,17 +1,13 @@
 import json
-import yaml
-import uproot
-import time
-import pickle
 import argparse
 from coffea import processor
-from humanfriendly import format_timespan
+from coffea.util import save
 from coffea.nanoevents import NanoAODSchema
-from analysis.configs import ProcessorConfigBuilder
+from analysis.utils import write_root
+from analysis.processors.WWtoMuEle import WWtoMuEleProcessor
 from analysis.processors.ztoee import ZToEEProcessor
 from analysis.processors.ztomumu import ZToMuMuProcessor
 from analysis.processors.zzto4l import ZZTo4LProcessor
-from analysis.processors.WWtoMuEle import WWtoMuEleProcessor
 
 
 def main(args):
@@ -22,7 +18,6 @@ def main(args):
         "zzto4l": ZZTo4LProcessor(year=args.year),
         "WWtoMuEle": WWtoMuEleProcessor(year=args.year),
     }
-    t0 = time.monotonic()
     out = processor.run_uproot_job(
         args.partition_fileset,
         treename="Events",
@@ -30,32 +25,12 @@ def main(args):
         executor=processor.futures_executor,
         executor_args={"schema": NanoAODSchema, "workers": 4},
     )
-    exec_time = format_timespan(time.monotonic() - t0)
-    print(f"Execution time: {exec_time}")
-    # save metadata (sumw, cutflow, ...)
-    save_path = f"{args.output_path}/{args.dataset}"
-    with open(f"{save_path}.pkl", "wb") as handle:
-        pickle.dump(out["metadata"], handle, protocol=pickle.HIGHEST_PROTOCOL)
-    # save histograms
-    config_builder = ProcessorConfigBuilder(processor=args.processor, year=args.year)
-    processor_config = config_builder.build_processor_config()
-    categories = processor_config.event_selection["categories"]
-    histograms = out["histograms"]
-    with uproot.recreate(f"{save_path}.root") as f:
-        for category in categories:
-            for histogram in histograms.values():
-                category_histogram = histogram[{"category": category}]
-                variables = [
-                    v for v in category_histogram.axes.name if v != "variation"
-                ]
-                for variable in variables:
-                    for syst_var in category_histogram.axes["variation"]:
-                        variation_histogram = category_histogram[
-                            {"variation": syst_var}
-                        ]
-                        f[f"{category}_{variable}_{syst_var}"] = (
-                            variation_histogram.project(variable)
-                        )
+    savepath = f"{args.output_path}/{args.dataset}"
+    if args.output_format == "coffea":
+        save(out, f"{savepath}.coffea")
+    elif args.output_format == "root":
+        write_root(out, savepath, args)
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -63,7 +38,6 @@ if __name__ == "__main__":
         "--processor",
         dest="processor",
         type=str,
-        default="WWtoMuEle",
         help="processor to be used {ztomumu, ztoee, zzto4l, WWtoMuEle}",
     )
     parser.add_argument(
@@ -90,6 +64,11 @@ if __name__ == "__main__":
         type=str,
         help="output path",
     )
+    parser.add_argument(
+        "--output_format",
+        type=str,
+        default="coffea",
+        help="format of output histograms {root, coffea}",
+    )
     args = parser.parse_args()
-
     main(args)
