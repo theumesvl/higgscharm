@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/EGammaD --dataset EGammaD_6 --partition_fileset '{"EGammaD_6": ["root://xrootd-cms.infn.it:1194//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/970aa4dd-a8e0-4377-ad63-344e2214d7fc.root", "root://t3se01.psi.ch:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/98a35a39-7b91-4af6-a3f1-fe2004ee3ccd.root", "root://cmsdcache-kit-disk.gridka.de:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/9c33ae35-df02-4dcc-b4e8-ab3dfa2c8702.root", "root://t3se01.psi.ch:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/a331bd8e-d47f-434a-97c3-93e0940d4dee.root", "root://cmsdcadisk.fnal.gov//dcache/uscmsdisk/store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/a4e095d2-1fed-4246-80a5-956c8602da67.root", "root://cmsdcadisk.fnal.gov//dcache/uscmsdisk/store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/a6604faa-7917-4fb1-a795-e9c7bfd3fe91.root", "root://cmsdcache-kit-disk.gridka.de:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/a90b8420-bfd6-430d-bf25-e07559e07933.root", "root://xrootd-cms.infn.it:1194//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/ae95375d-ec6f-4a31-aa25-952e9a64ba85.root", "root://dcache-cms-xrootd.desy.de:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/b09bc740-84e2-46e4-87a2-59330b679938.root", "root://osg-se.sprace.org.br:1094//store/data/Run2022D/EGamma/NANOAOD/22Sep2023-v1/2520000/b203a859-281d-4fc7-a6fa-550fbd997639.root"]}' --output_format root

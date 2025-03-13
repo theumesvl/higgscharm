@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/WGtoLNuG-PTG-200to400 --dataset WGtoLNuG-PTG-200to400_2 --partition_fileset '{"WGtoLNuG-PTG-200to400_2": ["root://k8s-redir.ultralight.org:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/6ccf3313-bd34-43d5-aaad-da33b7fbb0dd.root", "root://k8s-redir.ultralight.org:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/7efb0ef5-b67a-4a5e-a6b0-25c1e8642de1.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/82a2e2f2-5196-4c83-ad60-ae4e1627cea3.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/96fedf39-39a5-4cb2-b080-ffe2a433944b.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/eff8bf94-c218-43c2-b5af-319c884625ee.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/ffb58e98-67e3-40cd-bca1-2e7d4c072a17.root", "root://k8s-redir.ultralight.org:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-200to400_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/810000/d5f50298-8b4a-4472-b5b3-fc4e0a8e34a7.root"]}' --output_format root

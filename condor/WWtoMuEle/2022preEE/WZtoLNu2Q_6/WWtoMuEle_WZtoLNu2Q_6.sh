@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/WZtoLNu2Q --dataset WZtoLNu2Q_6 --partition_fileset '{"WZtoLNu2Q_6": ["root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/80474456-7b70-4395-8589-b5ff1bfa3a24.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/8e2e14b4-350a-413e-be19-31210a0a7641.root", "root://maite.iihe.ac.be:1095//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/9e77d5e1-0fc9-4e57-a9bf-57386f585937.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/a25c0235-bf16-475a-87e8-4ed1c26b6b06.root", "root://grid-cms-xrootd.physik.rwth-aachen.de:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/c1c853f7-a376-4b8c-a123-a766473cb35f.root", "root://xrootd-local.unl.edu:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/c5cad286-9cf1-4bbf-a213-ef96ca49dbcb.root", "root://grid-cms-xrootd.physik.rwth-aachen.de:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/e659de49-7f40-4a38-87fd-3e3b892b08b5.root", "root://xrootd-local.unl.edu:1094//store/mc/Run3Summer22NanoAODv12/WZtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/e7ca4eca-8268-47a5-b11c-4af1b5b71a2a.root"]}' --output_format root

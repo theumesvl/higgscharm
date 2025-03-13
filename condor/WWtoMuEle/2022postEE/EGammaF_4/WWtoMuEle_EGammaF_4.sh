@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022postEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022postEE/EGammaF --dataset EGammaF_4 --partition_fileset '{"EGammaF_4": ["root://grid-cms-xrootd.physik.rwth-aachen.de:1094//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/398559b7-7350-4c61-817d-37a3088a48f3.root", "root://cms-se0.kipt.kharkov.ua//dpm/kipt.kharkov.ua/home/cms/store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/39b82465-6748-4a4d-adeb-c1209058ceb7.root", "root://cmsio2.rc.ufl.edu:1094//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/3aab6e6e-0089-42e2-8731-c30507789b1f.root", "root://cmsio2.rc.ufl.edu:1094//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/3b393471-c6ac-4f35-afeb-b05b437d4d27.root", "root://t3se01.psi.ch:1094//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/3c29817b-6f7a-47dd-bc0d-acf6e198f4de.root", "root://cmsio2.rc.ufl.edu:1094//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/421403da-b29d-4d38-8cd5-4bae76d32a44.root", "root://cms-se0.kipt.kharkov.ua//dpm/kipt.kharkov.ua/home/cms/store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/42fdad0c-386e-4e4f-b431-569bd2914978.root", "root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/46ce26ef-eef2-4352-a7fa-289a0d5ce000.root", "root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/4883ebb2-932c-4800-b97b-db660ede05e1.root", "root://ruhex-osgce.rutgers.edu//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/48b66929-87a1-46cb-af61-276d91361698.root"]}' --output_format root

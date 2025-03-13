@@ -1,0 +1,8 @@
+Storage Site Name
+=================
+T2_EE_Estonia
+T2_IN_TIFR
+T2_PL_Cyfronet
+T2_PT_NCG_Lisbon
+T2_US_MIT
+T3_US_Rutgers

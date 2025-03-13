@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/ZZto2Nu2Q --dataset ZZto2Nu2Q_8 --partition_fileset '{"ZZto2Nu2Q_8": ["root://redirector.t2.ucsd.edu:1095//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/b9003c6c-96fc-4a55-a037-0ef9ca9333fa.root", "root://rdr.echo.stfc.ac.uk//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/bbc6b97b-7e97-464e-8f54-babcffc433f6.root", "root://redirector.t2.ucsd.edu:1095//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/be1a813f-b392-4ece-9885-2f91214b8271.root", "root://rdr.echo.stfc.ac.uk//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/bee7b1d0-85f9-4157-92b8-ccfcc0ac530c.root", "root://maite.iihe.ac.be:1095//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/d1892cb1-1895-440c-a8cf-3c760e16f436.root", "root://osg-se.sprace.org.br:1094//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/d2510c79-097a-4184-bbad-314225f735a8.root", "root://osg-se.sprace.org.br:1094//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/d37462c3-e979-4f70-96f5-0b04b21bcacd.root", "root://osg-se.sprace.org.br:1094//store/mc/Run3Summer22NanoAODv12/ZZto2Nu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/eef426f2-49ff-4157-a908-cfb6a5f0b278.root"]}' --output_format root

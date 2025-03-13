@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/TWminusto2L2Nu --dataset TWminusto2L2Nu_1 --partition_fileset '{"TWminusto2L2Nu_1": ["root://maite.iihe.ac.be:1095//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/14e2e86b-54ad-41f7-939b-e4ac41e485dd.root", "root://hactar01.crc.nd.edu//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/2a0917ba-a89d-40e6-ae4a-e7747a18867b.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/52cb2de1-9837-4bbc-b0d1-d7c75326cdc8.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/670e01b7-a475-44e4-b87e-eb8f1f44d456.root", "root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/889ff490-b0d8-4180-b1d1-36848f805843.root", "root://dcache-cms-xrootd.desy.de:1094//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/99445998-8ee4-4154-a986-550925e9a814.root", "root://eos.cms.rcac.purdue.edu//store/mc/Run3Summer22NanoAODv12/TWminusto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/9f335734-01f9-42d8-a379-3fe42d048e0b.root"]}' --output_format root

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022postEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022postEE/MuonF --dataset MuonF_21 --partition_fileset '{"MuonF_21": ["root://grid143.kfki.hu:1094//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/805d316e-9e5b-41c4-bdf1-975fd7cb1962.root", "root://k8s-redir.ultralight.org:1094//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/8350d1e8-42a1-4793-a6a5-5a261dad24ed.root", "root://maite.iihe.ac.be:1095//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/84acfeb7-68dc-4c1a-a70e-0661c219fda6.root", "root://ruhex-osgce.rutgers.edu//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/85de18d1-7f92-457a-8dc4-743768768aa5.root", "root://lcgsedr01.jinr.ru:1094//pnfs/jinr.ru/data/cms/store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/8c1998e4-011c-44de-b662-236a47dab55c.root", "root://grid-cms-xrootd.physik.rwth-aachen.de:1094//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/8d19c9ef-6156-4e02-ad15-ca5d0a655ce9.root", "root://cms-se0.kipt.kharkov.ua//dpm/kipt.kharkov.ua/home/cms/store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/8d221678-8ce3-4827-86e4-2971e46e4596.root", "root://cms-se0.kipt.kharkov.ua//dpm/kipt.kharkov.ua/home/cms/store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/8f7f1a40-6edf-423d-b965-48b17f207052.root", "root://lcgsedr01.jinr.ru:1094//pnfs/jinr.ru/data/cms/store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/900873b0-5445-4b15-8a5b-1404d442cd8c.root", "root://cmsio2.rc.ufl.edu:1094//store/data/Run2022F/Muon/NANOAOD/22Sep2023-v2/60000/933a9f3e-3418-4213-8a8d-eab0d5a90626.root"]}' --output_format root

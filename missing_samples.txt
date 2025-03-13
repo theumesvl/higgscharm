@@ -1,0 +1,12 @@
+Sample                                  XRootD Site                                                 Error Message
+============================================================================================================================================
+DYto2L_2Jets_50_12                      root://dcache-cms-xrootd.desy.de:1094                       OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+TQbartoLNu_24                           root://cmsdcadisk.fnal.gov                                  OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+TTtoLNu2Q_35                            root://cmsdcache-kit-disk.gridka.de:1094                    OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+TbarQto2Q_11                            root://cmsdcadisk.fnal.gov                                  OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+WWtoLNu2Q_9                             root://cmsdcache-kit-disk.gridka.de:1094                    OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+WtoLNu-2Jets_11                         root://ccxrdcms.in2p3.fr:1094                               ImportError: cannot import name 'TypeIs' from 'typing_extensions' (/opt/conda/lib/python3.9/site-packages/typing_extensions.py)
+WtoLNu-2Jets_13                         root://cmsdcadisk.fnal.gov                                  OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+WtoLNu-2Jets_17                         root://ccxrdcms.in2p3.fr:1094                               ImportError: cannot import name 'TypeIs' from 'typing_extensions' (/opt/conda/lib/python3.9/site-packages/typing_extensions.py)
+WtoLNu-2Jets_18                         root://cmsdcadisk.fnal.gov                                  OSError: XRootD error: [FATAL] Auth failed: No protocols left to try
+ZZto2L2Nu_14                            root://cms-se0.kipt.kharkov.ua                              OSError: XRootD error: [FATAL] Auth failed: No protocols left to try

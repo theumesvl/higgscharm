@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/WGtoLNuG-PTG-400to600 --dataset WGtoLNuG-PTG-400to600_1 --partition_fileset '{"WGtoLNuG-PTG-400to600_1": ["root://gaexrdoor.ciemat.es:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/225cf6d3-6f71-4063-94c6-de900e80174b.root", "root://cmsdcache-kit-disk.gridka.de:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/4442157d-d15a-47c6-8d4d-92139a951914.root", "root://grid-cms-xrootd.physik.rwth-aachen.de:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/5ee01bb2-18ff-4147-8914-51dc1584e1fd.root", "root://cmsxrootd.hep.wisc.edu:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/677b5ae5-ec9d-410e-946d-eef95db8d09a.root", "root://cmsxrootd.hep.wisc.edu:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/9e4077c9-f952-4d60-99eb-4b2fcbf1cc7c.root", "root://cmsdcache-kit-disk.gridka.de:1094//store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v1/70000/b1b41bb0-db18-46a7-8725-45d045dedf38.root"]}' --output_format root

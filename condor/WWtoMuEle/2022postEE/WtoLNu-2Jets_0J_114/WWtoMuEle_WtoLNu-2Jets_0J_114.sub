@@ -1,0 +1,9 @@
+executable            = /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/WWtoMuEle/2022postEE/WtoLNu-2Jets_0J_114/WWtoMuEle_WtoLNu-2Jets_0J_114.sh
+arguments             = $(ClusterId)$(ProcId)
+output                = /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/WWtoMuEle/2022postEE/WtoLNu-2Jets_0J_114/WWtoMuEle_WtoLNu-2Jets_0J_114.$(ClusterId).$(ProcId).out
+error                 = /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/WWtoMuEle/2022postEE/WtoLNu-2Jets_0J_114/WWtoMuEle_WtoLNu-2Jets_0J_114.$(ClusterId).$(ProcId).err
+log                   = /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm/condor/logs/WWtoMuEle/2022postEE/WtoLNu-2Jets_0J_114/WWtoMuEle_WtoLNu-2Jets_0J_114.$(ClusterId).$(ProcId).log
+
++JobFlavour           = "longlunch"
++SingularityImage     = "/cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest-py3.9"
+queue 1

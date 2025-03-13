@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XRD_NETWORKSTACK=IPv4
+export XRD_RUNFORKHANDLER=1
+export X509_USER_PROXY=/afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+voms-proxy-info -all
+voms-proxy-info -all -file /afs/cern.ch/user/t/tvanlaer/private/x509up_u158952
+cd /afs/cern.ch/user/t/tvanlaer/Hc/higgscharm
+
+python3 submit.py --processor WWtoMuEle --year 2022preEE --output_path /eos/user/t/tvanlaer/higgscharm/outputs/WWtoMuEle/2022preEE/EGammaC --dataset EGammaC_18 --partition_fileset '{"EGammaC_18": ["root://cmsio2.rc.ufl.edu:1094//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5c2eda6b-ede4-4c06-bb65-57dbe4e53427.root", "root://eoscms.cern.ch//eos/cms/store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5d32f575-0399-41e0-b085-0f9ee61dc06b.root", "root://gaexrdoor.ciemat.es:1094//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5d371a1f-192a-4a85-9738-1c7142873add.root", "root://grid143.kfki.hu:1094//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5e6607dd-4df0-44fa-864f-f72f810237e4.root", "root://hactar01.crc.nd.edu//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5ed16adc-ac33-4632-b758-44dfc29ed491.root", "root://eos.cms.rcac.purdue.edu//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5f621841-1ed2-47b2-8e5a-8d6beb98e5c7.root", "root://eos.cms.rcac.purdue.edu//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/5fff0893-868e-41f7-8156-37e04c22bf9b.root", "root://grid143.kfki.hu:1094//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/604a2e7c-1234-4be0-b5d5-fd9eaf906172.root", "root://cmsdcadisk.fnal.gov//dcache/uscmsdisk/store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/61aa820e-c1a5-4d13-9782-dc9545eb24f0.root", "root://xrootd-vanderbilt.sites.opensciencegrid.org:1094//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/40000/63fb5297-f63d-4e0e-b3d5-8adbd0364306.root"]}' --output_format root

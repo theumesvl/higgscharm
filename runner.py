@@ -61,9 +61,9 @@ MC_DATASETS = {
         "DYto2L_2Jets_10to50"
     ],
     "V+jets": [
-        #"WtoLNu-2Jets_0J",
-        #"WtoLNu-2Jets_1J",
-        #"WtoLNu-2Jets_2J",
+        "WtoLNu-2Jets_0J",
+        "WtoLNu-2Jets_1J",
+        "WtoLNu-2Jets_2J",
         "WtoLNu-2Jets",
     ],
     "higgs_bkg_WW": [

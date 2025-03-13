@@ -1,0 +1,7 @@
+Storage Site Name
+=================
+T1_DE_KIT_Disk
+T1_FR_CCIN2P3_Disk
+T1_US_FNAL_Disk
+T2_DE_DESY
+T2_UA_KIPT

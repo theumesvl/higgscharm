@@ -75,7 +75,7 @@ event_selection:
     transverse_mass_top: ak.all((objects["mTl2"] > 30) & (objects["mTll"] <= 60), axis=1)
     dilepton_mass_signal: ak.all((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass <= 72, axis=1)
     dilepton_mass_top: ak.all((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).mass > 72, axis=1)
-    dilepton_pt: ((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).pt > 30)
+    dilepton_pt: ak.all((objects['ll_pairs'].l1 + objects['ll_pairs'].l2).pt > 30, axis=1)
   categories:
     base:
       - atleast_one_goodvertex

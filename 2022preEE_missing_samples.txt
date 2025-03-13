@@ -1,0 +1,439 @@
+Sample                                  XRootD Site                                                 Error Message
+============================================================================================================================================
+DYto2L_2Jets_10to50_10                  root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_11                  root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_12                  root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_14                  root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_5                   root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_6                   root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_10to50_7                   root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_50_11                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+DYto2L_2Jets_50_3                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_1                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_10                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_12                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_15                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_17                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_20                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_22                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_29                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_3                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_30                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_31                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_32                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_4                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_5                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_7                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_8                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaC_9                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_1                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_11                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_2                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_4                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_5                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_7                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+EGammaD_8                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonC_1                                 root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonC_10                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonC_11                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonC_13                                root://t2dsk0011.cmsaf.mit.edu:1094                         FileNotFoundError: file not found ([ERROR] Server responded with an error: [3011] Too many DFS read attempts; operation terminated
+MuonC_6                                 root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonC_8                                 root://t2dsk0011.cmsaf.mit.edu:1094                         FileNotFoundError: file not found ([ERROR] Server responded with an error: [3011] Too many DFS read attempts; operation terminated
+MuonD_7                                 root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonD_8                                 root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonD_9                                 root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+MuonEGC_1                               root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/data/Run2022C/MuonEG/NANOAOD/22Sep2023-v1/2540000/0b2ec7a5-18db-435b-bb18-9f1b2b9dfa04.root; Operation not permitted
+MuonEGC_2                               root://t2dsk0011.cmsaf.mit.edu:1094                         FileNotFoundError: file not found ([ERROR] Server responded with an error: [3011] Too many DFS read attempts; operation terminated
+MuonEGC_3                               root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/data/Run2022C/MuonEG/NANOAOD/22Sep2023-v1/2540000/e535669e-4df3-4741-92eb-68ad25b63d59.root; Operation not permitted
+TBbarQ_5                                root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TBbarQ_t-channel_4FS_TuneCP5_13p6TeV_powheg-madspin-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/5edc155f-f387-4bce-91bb-75227a3b82dd.root; Operation not permitted
+TBbartoLplusNuBbar_1                    root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TBbartoLplusNuBbar_2                    root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TQbarto2Q_1                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TQbarto2Q_4                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TQbarto2Q_6                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TQbartoLNu_7                            root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_10                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_11                               root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_2                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_6                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_7                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_8                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTto4Q_9                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTtoLNu2Q_10                            root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/e5f54220-70ae-4d30-8e10-9cb15e733fcc.root; Operation not permitted
+TTtoLNu2Q_11                            root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/48813f43-1790-4ec9-aa1b-f50ae4150931.root; Operation not permitted
+TTtoLNu2Q_12                            root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/98600649-a395-41db-a2e3-3358c6fe2ff3.root; Operation not permitted
+TTtoLNu2Q_2                             root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/81679969-d756-4c33-a298-068733e9baf1.root; Operation not permitted
+TTtoLNu2Q_3                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTtoLNu2Q_4                             root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/88526c8e-9459-48fe-a295-1f4d5be9b784.root; Operation not permitted
+TTtoLNu2Q_5                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TTtoLNu2Q_6                             root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/30000/22dee4cf-0801-46e9-8db2-dd8637801ed2.root; Operation not permitted
+TTtoLNu2Q_8                             root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/2fe25541-d7fe-4e93-9239-cccc4fac1c32.root; Operation not permitted
+TTtoLNu2Q_9                             root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/cd56afe8-b0c9-43a7-ba4a-cf1509a1dc3b.root; Operation not permitted
+TWminusto4Q_1                           root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TWminusto4Q_2                           root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TWminusto4Q_4                           root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TWminustoLNu2Q_1                        root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TWminustoLNu2Q_2                        root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+TWminustoLNu2Q_4                        root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TWminustoLNu2Q_6                        root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarBQ_2                                root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+TbarBQ_3                                                                                            AttributeError: module 'uproot._util' has no attribute 'unset'
+TbarBtoLminusNuB_1                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarBtoLminusNuB_2                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarBtoLminusNuB_3                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarQto2Q_3                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarQto2Q_5                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarQtoLNu_3                            root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarWplusto2L2Nu_1                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarWplusto4Q_1                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+TbarWplusto4Q_2                         root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+TbarWplusto4Q_3                         root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+TbarWplustoLNu2Q_1                      root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+TbarWplustoLNu2Q_2                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+VBFHto2Wto2L2Nu_1                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+VBFHto2Wto2L2Nu_2                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+VBFHto2Wto2L2Nu_4                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+VBFHto2Wto2L2Nu_5                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WGtoLNuG-PTG-10to100_1                  root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/09201fea-a2ae-4f9e-ba3f-226ff4af8754.root; Operation not permitted
+WGtoLNuG-PTG-10to100_10                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/cd099372-c16b-4cfc-85cf-cacbbf8b04ca.root; Operation not permitted
+WGtoLNuG-PTG-10to100_12                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/eb0c6137-f770-4817-a122-e10d2234e2c2.root; Operation not permitted
+WGtoLNuG-PTG-10to100_13                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/082ca70b-9879-410d-ae25-1a2970e8ccaa.root; Operation not permitted
+WGtoLNuG-PTG-10to100_14                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/12b955fb-ac60-4a59-8da8-4b5a44c386af.root; Operation not permitted
+WGtoLNuG-PTG-10to100_15                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/32e81f1a-2b6d-4068-85cb-a691f0afe902.root; Operation not permitted
+WGtoLNuG-PTG-10to100_16                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/44a7e701-41be-4d2e-bf24-4adbe1b0141b.root; Operation not permitted
+WGtoLNuG-PTG-10to100_18                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/68bb4d28-89b3-4bd0-b214-0400a689de1a.root; Operation not permitted
+WGtoLNuG-PTG-10to100_19                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/87570746-aa48-466a-aa1a-4000ddaaca10.root; Operation not permitted
+WGtoLNuG-PTG-10to100_20                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/9f44a211-f708-42af-9b10-c42159a5edd9.root; Operation not permitted
+WGtoLNuG-PTG-10to100_21                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/badf4cb4-3838-4b4a-9433-ea4925687d66.root; Operation not permitted
+WGtoLNuG-PTG-10to100_22                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/c93f4733-01ab-499e-a725-a54a55c21169.root; Operation not permitted
+WGtoLNuG-PTG-10to100_23                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/d8173ac4-e13a-4223-b788-120da9b094b9.root; Operation not permitted
+WGtoLNuG-PTG-10to100_24                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2540000/f1debaea-73ed-4af8-85e0-cd52337e3ed9.root; Operation not permitted
+WGtoLNuG-PTG-10to100_25                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/30000/4cf1171a-c569-4f2b-8412-314da7a455a2.root; Operation not permitted
+WGtoLNuG-PTG-10to100_26                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/30000/776efc9a-5fa3-4421-8b0c-4b5a386ada71.root; Operation not permitted
+WGtoLNuG-PTG-10to100_27                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/30000/a9b2be6a-0bba-41fc-ab58-317152152934.root; Operation not permitted
+WGtoLNuG-PTG-10to100_28                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/30000/f7389647-b19c-44ee-aae6-24ddcbaee319.root; Operation not permitted
+WGtoLNuG-PTG-10to100_29                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/33945175-dc89-4551-90e9-54034487c9c5.root; Operation not permitted
+WGtoLNuG-PTG-10to100_30                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/4dc5bcf2-94c9-4536-ada0-f2341a467905.root; Operation not permitted
+WGtoLNuG-PTG-10to100_31                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/669b632f-7909-48ce-8d9d-dff61f94c2f1.root; Operation not permitted
+WGtoLNuG-PTG-10to100_32                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/98b8509f-ecf8-464d-8dbe-5ae68a24ffd4.root; Operation not permitted
+WGtoLNuG-PTG-10to100_33                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/bc9ebd3c-dbd7-4e35-9220-42eaacb9a6a5.root; Operation not permitted
+WGtoLNuG-PTG-10to100_34                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/cb495874-79af-405d-9e8f-4fa0d880e628.root; Operation not permitted
+WGtoLNuG-PTG-10to100_35                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/40000/fee5ba6e-d0d1-45a6-b270-a122ca25a4cc.root; Operation not permitted
+WGtoLNuG-PTG-10to100_37                 root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/50000/6b196aea-06c2-4ef6-b0b4-3fc3e8af5509.root; Operation not permitted
+WGtoLNuG-PTG-10to100_4                  root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/4bce8a1e-ab69-4d59-8db9-4e6e64a49901.root; Operation not permitted
+WGtoLNuG-PTG-10to100_5                  root://eos01.grid.cyfronet.pl:1094                          FileNotFoundError: file not found ([ERROR] Server responded with an error: [3010] Unable to open file /eos/cms/store/mc/Run3Summer22NanoAODv12/WGtoLNuG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/592092fa-2dbf-4482-a79a-7920a602897f.root; Operation not permitted
+WWto2L2Nu_1                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WWto2L2Nu_2                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WWto2L2Nu_3                             root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WWto2L2Nu_4                             root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WWto4Q_1                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_2                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_3                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_4                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_5                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_6                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_7                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_8                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWto4Q_9                                root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WWtoLNu2Q_2                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WWtoLNu2Q_4                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WWtoLNu2Q_6                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WWtoLNu2Q_7                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZto2L2Q_1                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZto2L2Q_3                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZto3LNu_2                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoL3Nu-1Jets_2                        root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoL3Nu-1Jets_3                        root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoLNu2Q_1                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoLNu2Q_4                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoLNu2Q_5                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WZtoLNu2Q_6                             root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_0J_10                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_100                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_101                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_105                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_107                     root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_0J_108                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_109                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_11                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_111                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_112                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_113                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_114                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_116                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_117                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_119                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_12                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_120                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_121                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_122                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_124                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_126                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_127                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_128                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_129                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_13                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_130                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_134                     root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_0J_135                     root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_14                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_140                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_141                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_144                     root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_0J_145                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_146                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_147                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_148                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_149                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_151                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_154                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_155                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_16                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_18                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_2                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_23                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_24                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_27                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_28                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_29                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_3                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_31                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_32                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_33                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_35                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_37                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_38                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_39                                                                                  AttributeError: module 'uproot._util' has no attribute 'unset'
+WtoLNu-2Jets_0J_40                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_0J_41                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_42                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_43                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_46                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_0J_48                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_49                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_0J_51                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_53                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_54                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_55                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_57                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_58                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_0J_59                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_60                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_61                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_62                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_0J_63                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_65                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_66                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_67                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_69                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_70                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_71                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_73                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_77                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_78                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_79                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_8                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_80                      root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_81                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_82                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_86                                                                                  AttributeError: module 'uproot._util' has no attribute 'unset'
+WtoLNu-2Jets_0J_89                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_9                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_91                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_92                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_94                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_95                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_96                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_97                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_0J_99                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_10                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_11                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_12                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_13                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_14                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_15                         root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_1                                                                                   AttributeError: module 'uproot._util' has no attribute 'unset'
+WtoLNu-2Jets_1J_100                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_102                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_103                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_104                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_105                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_106                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_108                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_109                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_110                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_111                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_114                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_115                     root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_13                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_14                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_15                      root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_17                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_19                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_2                                                                                   AttributeError: module 'uproot._util' has no attribute 'unset'
+WtoLNu-2Jets_1J_20                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_21                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_22                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_26                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_28                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_29                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_31                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_35                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_36                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_37                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_4                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_44                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_46                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_47                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_48                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_50                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_51                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_55                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_56                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_58                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_59                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_6                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_62                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_63                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_67                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_69                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_70                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_1J_71                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_72                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_73                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_74                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_75                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_76                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_77                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_78                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_79                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_8                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_80                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_81                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_84                      root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_87                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_88                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_89                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_90                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_91                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_92                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_93                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_96                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_1J_97                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2                          root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_1                       root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_10                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_100                     root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_11                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_12                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_13                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_14                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_15                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_16                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_17                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_18                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_19                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_2                       root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_20                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_21                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_22                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_23                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_24                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_25                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_26                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_27                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_28                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_29                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_30                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_31                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_32                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_33                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_34                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_35                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_36                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_38                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_39                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_4                       root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_40                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_41                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_42                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_43                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_44                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_45                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_46                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_47                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_48                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_49                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_50                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_51                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_52                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_53                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_54                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_55                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_56                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_57                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_58                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_59                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_6                       root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_60                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_61                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_62                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_63                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_64                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_65                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_66                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_67                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_68                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_69                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_7                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_70                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_71                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_72                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_73                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_74                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_75                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_76                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_77                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_78                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_79                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_8                       root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_80                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_81                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_82                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_83                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_84                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_85                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_86                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_87                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_88                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_89                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_9                       root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_90                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_91                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_92                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_93                      root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+WtoLNu-2Jets_2J_94                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_95                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_96                      root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_2J_97                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_98                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_2J_99                      root://xroot02.ncg.ingrid.pt:1094                           OSError: XRootD error: [FATAL] TLS error: resource temporarily unavailable
+WtoLNu-2Jets_3                          root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+WtoLNu-2Jets_7                          root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Nu_1                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Nu_3                             root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Nu_5                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Nu_9                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_1                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_12                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_13                             root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_2                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_3                              root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+ZZto2L2Q_5                              root://xrootd.hep.kbfi.ee:1094                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_6                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_7                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_8                              root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto2L2Q_9                              root://se01.indiacms.res.in                                 FileNotFoundError: file not found ([FATAL] Invalid address)
+ZZto4L_1                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto4L_6                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
+ZZto4L_8                                root://ruhex-osgce.rutgers.edu                              OSError: XRootD error: [ERROR] Operation expired
