@@ -64,11 +64,13 @@ MC_DATASETS = {
         "WtoLNu-2Jets_0J",
         "WtoLNu-2Jets_1J",
         "WtoLNu-2Jets_2J",
-        "WtoLNu-2Jets",
+        #"WtoLNu-2Jets",
     ],
     "higgs_bkg_WW": [
         "GluGluHto2Wto2L2Nu",
+        "GluGluHto2Tau"
         "VBFHto2Wto2L2Nu",
+        "VBFHToTauTau"
     ],
     "higgs": [
         "bbH_Hto2Zto4L",
