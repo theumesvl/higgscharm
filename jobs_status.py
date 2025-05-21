@@ -41,7 +41,7 @@ def parse_args():
         help="Format of output histograms",
     )
     parser.add_argument(
-        "-h",
+        "-H",
         "--hours_ago",
         type=int,
         default=8,
