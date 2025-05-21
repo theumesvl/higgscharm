@@ -34,7 +34,7 @@ if __name__ == "__main__":
     # the dataset definition is passed to a DataDiscoveryCLI
     ddc = DataDiscoveryCLI()
     # set the allow sites to look for replicas
-    sites_file = filesets_dir / f"{args.year}_sites.yaml"
+    sites_file = filesets_dir / f"sites.yaml"
     with open(sites_file, "r") as f:
         sites = yaml.safe_load(f)["white"]
     ddc.do_allowlist_sites(sites)

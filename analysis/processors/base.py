@@ -46,6 +46,7 @@ class BaseProcessor(processor.ProcessorABC):
         is_mc = hasattr(events, "genWeight")
         if not is_mc:
             events["Jet", "hadronFlavour"] = ak.zeros_like(events.Jet.pt)
+            events["Jet", "partonFlavour"] = ak.zeros_like(events.Jet.pt)
 
         # initialize output dictionary
         output = {}
