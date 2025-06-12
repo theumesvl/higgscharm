@@ -6,6 +6,10 @@
   DiEle:
     - Ele23_Ele12_CaloIdL_TrackIdL_IsoVL
     - DoubleEle25_CaloIdL_MW
+  DiMuDZ:
+    - Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ    
+  DiMuNoDZ:
+    - Mu17_TrkIsoVVL_Mu8_TrkIsoVVL
   DiMu:
     - Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8
   MuEle:

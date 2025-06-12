@@ -372,7 +372,7 @@ class ObjectSelector:
         leptons = ak.concatenate(
             [self.objects["muons"], self.objects["electrons"]], axis=1
         )
-        leptons = leptons[ak.argsort(leptons.pt, axis=1)]
+        leptons = leptons[ak.argsort(leptons.pt, ascending=False, axis=1)]
         self.objects[obj_name] = ak.zip(
             {
                 "pt": leptons.pt,
@@ -394,24 +394,29 @@ class ObjectSelector:
             self.objects["zcandidates"].l1.pt + self.objects["zcandidates"].l2.pt
         )
 
-    def select_hww_mll(self, obj_name):
-        self.objects["mll"] = transverse_mass(
+    def select_hww_mTll(self, obj_name):
+        self.objects["mTll"] = transverse_mass(
             self.objects["zcandidates"].l1 + self.objects["zcandidates"].l2,
             self.objects["met"],
         )
 
-    def select_hww_ml1(self, obj_name):
-        self.objects["ml1"] = transverse_mass(
+    def select_hww_mTl1(self, obj_name):
+        self.objects["mTl1"] = transverse_mass(
             self.objects["zcandidates"].l1, self.objects["met"]
         )
 
-    def select_hww_ml2(self, obj_name):
-        self.objects["ml2"] = transverse_mass(
+    def select_hww_mTl2(self, obj_name):
+        self.objects["mTl2"] = transverse_mass(
             self.objects["zcandidates"].l2, self.objects["met"]
         )
 
     def select_candidate_cjet(self, obj_name):
         self.objects["candidate_cjet"] = self.objects["cjets"][
-            ak.argmax(self.objects["cjets"].btagDeepFlavCvL, axis=1)
+            ak.argmax(self.objects["cjets"].btagPNetCvL, axis=1)
             == ak.local_index(self.objects["cjets"], axis=1)
+        ]
+    def select_candidate_bjet(self, obj_name):
+        self.objects["candidate_bjet"] = self.objects["bjets"][
+            ak.argmax(self.objects["bjets"].btagPNetB, axis=1)
+            == ak.local_index(self.objects["bjets"], axis=1)
         ]
