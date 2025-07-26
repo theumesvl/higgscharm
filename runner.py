@@ -34,6 +34,7 @@ MC_DATASETS = {
     "dyjets_50": ["DYto2L_2Jets_50"],
     "dyjets_10to50": ["DYto2L_2Jets_10to50"],
     "dyjets": ["DYto2L_2Jets_50", "DYto2L_2Jets_10to50"],
+    "signalHWW": ["signalHWW"],
     "higgs": [
         "bbH_Hto2Zto4L",
         "GluGluHtoZZto4L",
@@ -110,7 +111,7 @@ DATASETS = {
     "ztoee": {"mc": ["dyjets", "ttbar", "singletop", "diboson"], "data": ["EGamma"]},
     "ztomumu": {"mc": ["dyjets", "ttbar", "singletop", "diboson"], "data": ["Muon"]},
     "hww": {
-        "mc": ["ttbar", "singletop", "diboson", "dyjets", "vjets", "WG"],
+        "mc": ["ttbar", "singletop", "diboson", "dyjets", "vjets", "WG", "signalHWW"],
         "data": ["SingleMuon", "DoubleMuon", "Muon", "MuonEG", "EGamma"],
     },
     "zzto4l": {
