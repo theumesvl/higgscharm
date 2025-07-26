@@ -235,7 +235,7 @@ class ObjectSelector:
         )
         self.objects[obj_name] = leptons
 
-    def select_zcandidates(self, obj_name):
+    def select_ll_pair(self, obj_name):
         """selects Z candidates for SR and all CRS"""
         # get Z candidates
         zcand = ak.combinations(self.objects["leptons"], 2, fields=["l1", "l2"])
@@ -252,10 +252,10 @@ class ObjectSelector:
         """selects best Z candidate as the one closest to the nominal Z mass"""
         zmass = 91.1876
         best_zcand_idx = ak.argmin(
-            np.abs(self.objects["zcandidates"].p4.mass - zmass), axis=1
+            np.abs(self.objects["ll_pair"].p4.mass - zmass), axis=1
         )
-        best_zcand = self.objects["zcandidates"][
-            best_zcand_idx == self.objects["zcandidates"].idx
+        best_zcand = self.objects["ll_pair"][
+            best_zcand_idx == self.objects["ll_pair"].idx
         ]
         self.objects[obj_name] = best_zcand
 
@@ -264,7 +264,7 @@ class ObjectSelector:
         selects additional loose leptons in the Z+L CR. Adds the mask 'pass_selection' to additional loose leptons that pass the analysis selection
         """
         # select best Z candidates
-        best_zcands = self.objects["best_zcandidates"]
+        best_zcands = self.objects["best_ll_pair"]
         # select loose leptons (whose idx are different to best Z candidate lepton's idx)
         loose_leptons = self.objects["leptons"][self.objects["leptons"].is_loose]
         loose_leptons_bestzl1_idx = loose_leptons.idx != best_zcands.l1.idx[:, None]
@@ -330,21 +330,21 @@ class ObjectSelector:
         # add loose leptons to objects
         self.objects[obj_name] = loose_leptons
 
-    def select_zzcandidates(self, obj_name):
+    def select_zll_pair(self, obj_name):
         """selects ZZ candidates for SR and CRs"""
         self.objects[obj_name] = make_cand(
-            self.objects["zcandidates"], kind="zz", sort_by_mass=True
+            self.objects["ll_pair"], kind="zz", sort_by_mass=True
         )
 
     def select_zllcandidates(self, obj_name):
         """selects Zll candidates for CRs"""
         self.objects[obj_name] = make_cand(
-            self.objects["zcandidates"], kind="zll", sort_by_mass=False
+            self.objects["ll_pair"], kind="zll", sort_by_mass=False
         )
 
     def select_best_zzcandidate(self, obj_name):
         """selects best ZZ candidates for SR"""
-        self.objects[obj_name] = select_best_zzcandidate(self.objects["zzcandidates"])
+        self.objects[obj_name] = select_best_zzcandidate(self.objects["zll_pair"])
 
     def select_best_1fcr_zllcandidate(self, obj_name):
         """selects best Zll candidates for 3P1F CR"""
@@ -386,28 +386,48 @@ class ObjectSelector:
             behavior=candidate.behavior,
         )
 
-    def select_hww_zcandidates(self, obj_name):
-        self.objects["zcandidates"] = ak.combinations(
-            self.objects["leptons"], 2, fields=["l1", "l2"]
-        )
-        self.objects["zcandidates"].pt = (
-            self.objects["zcandidates"].l1.pt + self.objects["zcandidates"].l2.pt
-        )
+    def select_hww_ll_pair(self, obj_name):
+        has_lepton = ak.num(self.objects["leptons"]) >= 1
+        #self.objects["first_leptons"] = ak.where(has_lepton, self.objects["leptons"][:, 0], None)
 
+        has_second = ak.num(self.objects["leptons"]) >= 2
+        #self.objects["second_leptons"] = ak.where(has_second, self.objects["leptons"][:, 1], None)
+
+        self.objects["dilepton"] = ak.where(has_second, self.objects["leptons"][:, :2], None)
+        has_two = ak.num(self.objects["leptons"], axis=1) >= 2
+        dilepton_masked = ak.mask(self.objects["leptons"], has_two)
+        dilepton = dilepton_masked[:, :2]
+        self.objects["dilepton"] = dilepton
+
+        self.objects["ll_pair"] = ak.combinations(
+            self.objects["dilepton"], 2, fields=["l1", "l2"]
+        )
+        self.objects["ll_pair"].pt = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).pt
+        self.objects["ll_pair"].eta = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).eta
+        self.objects["ll_pair"].phi = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).phi
+        self.objects["ll_pair"].mass = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).mass
     def select_hww_mTll(self, obj_name):
         self.objects["mTll"] = transverse_mass(
-            self.objects["zcandidates"].l1 + self.objects["zcandidates"].l2,
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2,
             self.objects["met"],
         )
 
     def select_hww_mTl1(self, obj_name):
         self.objects["mTl1"] = transverse_mass(
-            self.objects["zcandidates"].l1, self.objects["met"]
+            self.objects["ll_pair"].l1, self.objects["met"]
         )
 
     def select_hww_mTl2(self, obj_name):
         self.objects["mTl2"] = transverse_mass(
-            self.objects["zcandidates"].l2, self.objects["met"]
+            self.objects["ll_pair"].l2, self.objects["met"]
         )
 
     def select_candidate_cjet(self, obj_name):

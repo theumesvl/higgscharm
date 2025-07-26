@@ -98,11 +98,11 @@ def save_process_histograms_by_process(
     categories,
 ):
     print_header(f"Processing {process} outputs")
-    # group and accumulate output files by sample
+    # group and accumulate output files by process
     extension = ".coffea"
     output_files = []
     for sample in process_samples_map[process]:
-        output_files += glob.glob(f"{output_dir}/{sample}*{extension}", recursive=True)
+        output_files += glob.glob(f"{output_dir}/{sample}{extension}", recursive=True)
 
     logging.info(f"saving {process} histograms")
     hist_to_accumulate = []
