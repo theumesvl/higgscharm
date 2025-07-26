@@ -41,95 +41,103 @@ def clear_output_directory(output_dir, ext):
         os.remove(file)
 
 
-def df_to_latex(df):
-    # Initialize LaTeX table output
-    output = """
-\\begin{table}[h!]
-\\centering
-\\begin{tabular}{@{} l c @{}}
-\\hline
- & \\textbf{Events} \\\\
-\\hline
+def df_to_latex(df, table_title="Events"):
+    output = rf"""\begin{{table}}[h!]
+\centering
+\begin{{tabular}}{{@{{}} l c @{{}}}}
+\hline
+ & \textbf{{{table_title}}} \\
+\hline
 """
 
-    # Initialize variables to hold important values for later calculations
-    purity_value = df.percentage.max()  # To store the purity value
-    total_background_value = None  # To store the total background events
-    data_value = None  # To store the data value
+    total_background_value = None
+    data_value = None
 
-    # First, process the samples and save the purity value from the first sample
     for label, row in df.iterrows():
-        # Extract values from the dataframe row
         events = row["events"]
-        stat_unc = row["stat unc"] if pd.notna(row["stat unc"]) else None
-        syst_unc_up = row["syst unc up"] if pd.notna(row["syst unc up"]) else None
-        syst_unc_down = row["syst unc down"] if pd.notna(row["syst unc down"]) else None
-        percentage = row["percentage"] if pd.notna(row["percentage"]) else None
+        stat_err = row["stat err"] if pd.notna(row["stat err"]) else None
+        syst_err_up = row["syst err up"] if pd.notna(row["syst err up"]) else None
+        syst_err_down = row["syst err down"] if pd.notna(row["syst err down"]) else None
 
-        # Ensure events are treated as float for formatting
         events_f = f"{float(events):.2f}"
-        stat_unc_f = f"{float(stat_unc):.2f}" if stat_unc is not None else "nan"
+        stat_err_f = f"{float(stat_err):.2f}" if stat_err is not None else "nan"
+        syst_err_up_f = f"{float(syst_err_up):.2f}" if syst_err_up is not None else "nan"
+        syst_err_down_f = f"{float(syst_err_down):.2f}" if syst_err_down is not None else "nan"
 
-        # Calculate syst uncertainty as the mean of up and down values
-        if syst_unc_up is not None and syst_unc_down is not None:
-            syst_unc_mean = (syst_unc_up + syst_unc_down) / 2
-            syst_unc_f = f"{float(syst_unc_mean):.2f}"
-        else:
-            syst_unc_f = "nan"
+        if label not in ["Data", "Total background", "Data/Total background"]:
+            output += f"{label} & ${events_f} \\pm {stat_err_f} \\,(\\text{{stat}}) \\pm {syst_err_up_f} \\,(\\text{{syst}})$\\\\\n"
 
-        # Add sample rows to LaTeX output
-        if label not in ["Data", "Total Background", "Data/Total Background"]:
-            output += f"{label} & ${events_f} \\pm {stat_unc_f} \\,(\\text{{stat}}) \\pm {syst_unc_f} \\,(\\text{{syst}})$\\\\\n"
+    output += r"\hline" + "\n"
 
-    # Add line after sample rows before Total Background and Data
-    output += "\\hline\n"
+    # Total background
+    bg = df.loc["Total background"]
+    total_background_value = bg["events"]
+    print("Total_background_value:")
+    print(total_background_value)
+    stat_err_bg = bg["stat err"]
+    print("stat_err_bg:")
+    print(stat_err_bg)
+    syst_err_up_bg = bg["syst err up"]
+    print("syst_err_up_bg:")
+    print(syst_err_up_bg)
+    syst_err_down_bg = bg["syst err down"]
 
-    # Now handle Total Background row
-    total_background_row = df.loc["Total Background"]
-    total_background_value = total_background_row["events"]
-    stat_unc_total = total_background_row["stat unc"]
-    syst_unc_up_total = total_background_row["syst unc up"]
-    syst_unc_down_total = total_background_row["syst unc down"]
+    output += f"Total Background & ${float(total_background_value):.2f} \\pm {float(stat_err_bg):.2f} \\, (\\text{{stat}}) \\pm {float(syst_err_up_bg):.2f} \\, (\\text{{syst}})$ \\\\ \n"
 
-    # Calculate the uncertainties and format the output for Total Background
-    events_f_total = f"{float(total_background_value):.2f}"
-    stat_unc_f_total = (
-        f"{float(stat_unc_total):.2f}" if pd.notna(stat_unc_total) else "nan"
-    )
-    syst_unc_f_total = (
-        f"{(syst_unc_up_total + syst_unc_down_total) / 2:.2f}"
-        if pd.notna(syst_unc_up_total) and pd.notna(syst_unc_down_total)
-        else "nan"
-    )
-
-    output += f"Total Background & ${events_f_total} \\pm {stat_unc_f_total} \\,(\\text{{stat}}) \\pm {syst_unc_f_total} \\,(\\text{{syst}})$ \\\\ \n"
-
-    # Now handle Data row
+    # Data
     data_value = df.loc["Data"]["events"]
     output += f"Data & ${float(data_value):.0f}$ \\\\ \n"
 
-    # Add line after Data
-    output += "\\hline\n"
+    output += r"\hline" + "\n"
 
-    # Handle Purity row
-    if purity_value is not None:
-        output += f"Purity & {purity_value:.2f} \\% \\\\ \n"
-
-    # Add line before Data/Background
-    output += "\\hline\n"
-
-    # Handle Data/Total Background ratio
-    if total_background_value is not None and data_value is not None:
+    # Data/Total Background
+    if total_background_value and data_value:
         ratio = data_value / total_background_value
         output += f"Data/Total Background & ${ratio:.2f}$ \\\\ \n"
 
-    # End the table with the LaTeX footer
-    output += "\\hline\n"
-    output += "\\end{tabular}\n"
-    output += "\\end{table}"
-
-    # Return the generated LaTeX table
+    output += r"""\hline
+\end{tabular}
+\end{table}"""
     return output
+
+
+def combine_event_tables(df1, df2):
+    assert all(df1.index == df2.index), "Los índices de los DataFrames no coinciden."
+    combined = pd.DataFrame(index=df1.index)
+    combined["events"] = df1["events"] + df2["events"]
+    combined["stat err"] = np.sqrt(df1["stat err"] ** 2 + df2["stat err"] ** 2)
+    print("keys for df1:")
+    print(df1.keys())
+    print("keys for df2:")
+    print(df2.keys())
+    combined["syst err up"] = np.sqrt(df1["syst err up"] ** 2 + df2["syst err up"] ** 2)
+    combined["syst err down"] = np.sqrt(df1["syst err down"] ** 2 + df2["syst err down"] ** 2)
+    data = combined.loc["Data", "events"]
+    total_bkg = combined.loc["Total background", "events"]
+    combined.loc["Data/Total background", ["events", "stat err", "syst err up", "syst err down"]] = [
+        data / total_bkg,
+        np.nan,
+        np.nan,
+        np.nan,
+    ]
+    return combined
+
+
+def combine_cutflows(df1, df2):
+    if not df1.index.equals(df2.index):
+        raise ValueError("Los índices (etiquetas de cortes) no coinciden.")
+    combined = df1.add(df2, fill_value=0)
+    return combined
+
+
+def format_cutflow_with_efficiency(events_df, eff_df):
+    combined = pd.DataFrame(index=events_df.index, columns=events_df.columns)
+    for col in events_df.columns:
+        for idx in events_df.index:
+            val = events_df.loc[idx, col]
+            eff = eff_df.loc[idx, col]
+            combined.loc[idx, col] = f"{val} ({eff:.2f}%)"
+    return combined
 
 
 def get_variations_keys(processed_histograms):

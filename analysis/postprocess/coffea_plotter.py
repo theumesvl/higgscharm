@@ -60,7 +60,8 @@ class CoffeaPlotter:
         with open(f"{Path.cwd()}/analysis/postprocess/luminosity.yaml", "r") as f:
             self.luminosities = yaml.safe_load(f)
 
-        # set processes color map
+        # set processes color map (old code)
+        '''
         with open(f"{Path.cwd()}/analysis/filesets/{aux_year}_nanov12.yaml", "r") as f:
             dataset_configs = yaml.safe_load(f)
         processes = sorted(
@@ -73,6 +74,58 @@ class CoffeaPlotter:
         self.color_map = {
             process: color for process, color in zip(processes, self.style["colors"])
         }
+        '''
+
+    ### manually define colour map to have same colour for each sample on all plots
+    # Define fixed colors for specific processes
+        fixed_colors = {
+            "tt": "#e76300",         # orange
+            "single top": "#bd1f01",         # single top - red
+            "dyjets": "#3f90da",     # DY+jets - blue
+            "diboson": "#ffa90e",    # diboson - yellow
+            "vjets": "#94a4a2",      # V+jets - grey
+            "ggh": "#a96b59",        # ggH - brown
+            "vbf": "#832db6",        # VBF - purple
+            "wg": "#b9ac70",         # WG - yellow-brown 
+            "ww": "#92dadd",         # WW - turquoise
+            "ww": "#717581",         # WZ - grey-blue
+            "zz": "#1b9e77",         # ZZ - Mountain Meadow
+        }
+        
+        # Fallback colors for any additional processes
+        fallback_colors = [
+            "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666"
+        ]
+        
+        # Load processes from YAML
+        with open(f"{Path.cwd()}/analysis/filesets/{aux_year}_nanov12.yaml", "r") as f:
+            dataset_configs = yaml.safe_load(f)
+        
+        # Extract unique processes (excluding Data)
+        processes = sorted(
+            set(
+                dataset_configs[sample]["process"]
+                for sample in dataset_configs
+                if dataset_configs[sample]["process"] != "Data"
+            )
+        )
+        
+        # Assign colors: fixed where defined, else from fallback list
+        self.color_map = {}
+        used_colors = set(fixed_colors.values())
+        fallback_iter = iter([c for c in fallback_colors if c not in used_colors])
+        
+        for process in processes:
+            key = process.lower().replace("+", "").replace("jets", "jets")  # Normalize names
+            if key in fixed_colors:
+                self.color_map[process] = fixed_colors[key]
+            else:
+                try:
+                    self.color_map[process] = next(fallback_iter)
+                except StopIteration:
+                    # Add an extra distinct color (blue-magenta) for colorblind safety
+                    self.color_map[process] = "#cc79a7"       
+        #####
 
     def get_histogram(
         self,
@@ -278,7 +331,10 @@ class CoffeaPlotter:
             colors, labels = [], []
             for process in histogram_info["nominal"]:
                 labels.append(process)
-                colors.append(self.color_map[process])
+                #print("Available colors:", self.color_map.keys())    # for debugging
+                #print("Looking for:", process)                       # for debugging
+                #colors.append(self.color_map[process])
+                colors.append(self.color_map.get(process, "#000000"))
 
         else:
             labels = []
@@ -334,9 +390,13 @@ class CoffeaPlotter:
         self.plot_ratio(rax)
         # set limits
         hist_edges = np.array([[i, j] for i, j in zip(self.edges[:-1], self.edges[1:])])
-        xlimits = np.min(hist_edges[self.nominal_values > 0]), np.max(
-            hist_edges[self.nominal_values > 0]
-        )
+        maskhistedge = self.nominal_values > 0
+        if np.any(maskhistedge):
+            xlimits = np.min(hist_edges[maskhistedge]), np.max(hist_edges[maskhistedge])
+        else:
+            print(f"[Warning] No data to plot for {observable} in {category}")
+            return  # or skip this plot safely
+
         ax.set_xlim(xlimits)
         rax.set_xlim(xlimits)
         rax.set_ylim(yratio_limits)

@@ -1,0 +1,90 @@
+import yaml
+import glob
+import logging
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from coffea.util import load, save
+from coffea.processor import accumulate
+from analysis.postprocess.utils import print_header, get_variations_keys
+
+## calculation based on cutflow
+def calculate_top_normalization_factor(output_dir, category):
+    """
+    Compute residual top (tt + single top) scale factor using yields from cutflow CSV from top CR.
+    """
+    results_file = Path(output_dir) / category / f"results_{category}.csv"
+    
+    if not results_file.exists():
+        logging.warning(f"Results CSV not found: {results_file}")
+        return 1.0
+
+    # Load the results CSV
+    df = pd.read_csv(results_file, index_col=0)
+
+    # Sanity check for required entries
+    if "tt" not in df.index or "Single Top" not in df.index or "Data" not in df.index or "events" not in df.columns:
+        logging.warning("Required rows or 'events' column not found in results.")
+        return 1.0
+
+    data_events = df.at["Data", "events"]
+    tt_events = df.at["tt", "events"]
+    singletop_events = df.at["Single Top", "events"]
+    top_events = tt_events + singletop_events
+
+    # Compute MC sum excluding top and Data (e.g., DY, WJets, etc.)
+    mc_excl_top = df.drop(index=["Data", "tt", "Single Top", "Total background", "Data/Total background"], errors="ignore")["events"].sum()
+
+    if top_events > 0:
+        sf_top = (data_events - mc_excl_top) / top_events
+        logging.info(f"[Top SF] Data: {data_events:.3f}")
+        logging.info(f"[Top SF] MC (excl. top): {mc_excl_top:.3f}")
+        logging.info(f"[Top SF] Top: {top_events:.3f}")
+        logging.info(f"[Top SF] Normalization factor: {sf_top:.3f}")
+        return sf_top
+    else:
+        logging.warning("Top yield is zero; returning SF = 1.0")
+        return 1.0
+
+'''
+## calculation based on results report
+def calculate_top_normalization_factor(output_dir, category):
+    """
+    Compute residual top (tt + single top) scale factor using yields from results CSV from top CR.
+    """
+    results_file = Path(output_dir) / category / f"results_{category}.csv"
+    
+    if not results_file.exists():
+        logging.warning(f"Results CSV not found: {results_file}")
+        return 1.0
+
+    # Load the results CSV
+    df = pd.read_csv(results_file, index_col=0)
+
+    # Sanity check for required entries
+    if "tt" not in df.index or "Single Top" not in df.index or "Data" not in df.index or "events" not in df.columns:
+        logging.warning("Required rows or 'events' column not found in results.")
+        return 1.0
+
+    data_events = df.at["Data", "events"]
+    tt_events = df.at["tt", "events"]
+    singletop_events = df.at["Single Top", "events"]
+    top_events = tt_events + singletop_events
+
+    # Compute MC sum excluding top and Data (e.g., DY, WJets, etc.)
+    mc_excl_top = df.drop(index=["Data", "tt", "Single Top", "Total background", "Data/Total background"], errors="ignore")["events"].sum()
+
+    if top_events > 0:
+        sf_top = (data_events - mc_excl_top) / top_events
+        logging.info(f"[Top SF] Data: {data_events:.3f}")
+        logging.info(f"[Top SF] MC (excl. top): {mc_excl_top:.3f}")
+        logging.info(f"[Top SF] Top: {top_events:.3f}")
+        logging.info(f"[Top SF] Normalization factor: {sf_top:.3f}")
+        return sf_top
+    else:
+        logging.warning("Top yield is zero; returning SF = 1.0")
+        return 1.0
+'''
+#output_dir = "/eos/user/t/tvanlaer/higgscharm/outputs/hww/2022preEE"
+output_dir = "/eos/user/t/tvanlaer/higgscharm/outputs/hww/2022postEE"
+print(calculate_top_normalization_factor(output_dir, "top_CR_bjets"))

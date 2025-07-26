@@ -14,7 +14,11 @@ from analysis.postprocess.coffea_plotter import CoffeaPlotter
 from analysis.postprocess.utils import (
     print_header,
     setup_logger,
+    df_to_latex,
     clear_output_directory,
+    combine_event_tables,
+    combine_cutflows,
+    format_cutflow_with_efficiency,
 )
 from analysis.postprocess.coffea_postprocessor import (
     save_process_histograms_by_process,
@@ -97,6 +101,9 @@ def get_sample_name(filename: str, year: str) -> str:
 
 def build_process_sample_map(datasets: list[str], year: str) -> dict[str, list[str]]:
     """map processes to their corresponding samples based on dataset config"""
+    #if year in ["2022", "2023"]:
+       # identifier = "EE" if year == "2022" else "BPix"
+       # year = f"{year}pre{identifier}"
     fileset_path = Path.cwd() / "analysis/filesets" / f"{year}_nanov12.yaml"
     with open(fileset_path, "r") as f:
         dataset_configs = yaml.safe_load(f)
@@ -201,9 +208,85 @@ if __name__ == "__main__":
     processed_histograms = None
 
     if args.year in ["2022", "2023"]:
+        # load and accumulate processed histograms
         processed_histograms = load_year_histograms(
             args.workflow, args.year, args.output_format
         )
+        identifier = "EE" if args.year == "2022" else "BPix"
+        for category in categories:
+            logging.info(f"category: {category}")
+            # load and combine results tables
+            results_pre = pd.read_csv(
+                OUTPUT_DIR
+                / args.workflow
+                / f"{args.year}pre{identifier}"
+                / category
+                / f"results_{category}.csv",
+                index_col=0,
+            )
+            results_post = pd.read_csv(
+                OUTPUT_DIR
+                / args.workflow
+                / f"{args.year}post{identifier}"
+                / category
+                / f"results_{category}.csv",
+                index_col=0,
+            )
+            combined_results = combine_event_tables(results_pre, results_post)
+
+            print_header(f"Results")
+            logging.info(
+                combined_results.applymap(lambda x: f"{x:.5f}" if pd.notnull(x) else "")
+            )
+            logging.info("\n")
+
+            category_dir = OUTPUT_DIR / args.workflow / args.year / category
+            category_dir.mkdir(parents=True, exist_ok=True)
+            combined_results.to_csv(category_dir / f"results_{category}.csv")
+
+            # save latex table
+            latex_table = df_to_latex(combined_results)
+            with open(category_dir / f"results_{category}.txt", "w") as f:
+                f.write(latex_table)
+
+            # load and combine cutflow tables
+            print_header(f"Cutflow")
+            cutflow_pre = pd.read_csv(
+                OUTPUT_DIR
+                / args.workflow
+                / f"{args.year}pre{identifier}"
+                / category
+                / f"cutflow_{category}.csv",
+                index_col=0,
+            )
+            cutflow_post = pd.read_csv(
+                OUTPUT_DIR
+                / args.workflow
+                / f"{args.year}post{identifier}"
+                / category
+                / f"cutflow_{category}.csv",
+                index_col=0,
+            )
+            combined_cutflow = combine_cutflows(cutflow_pre, cutflow_post)
+            combined_cutflow.to_csv(category_dir / f"cutflow_{category}.csv")
+            logging.info(
+                combined_cutflow.applymap(lambda x: f"{x:.2f}" if pd.notnull(x) else "")
+            )
+            logging.info("\n")
+
+            # compute efficiencies
+            print_header(f"Efficiency")
+            eff_df = pd.DataFrame(index=combined_cutflow.index)
+            for col in combined_cutflow.columns:
+                eff_df[col] = (
+                    combined_cutflow[col] / combined_cutflow[col].iloc[0] * 100
+                )
+            eff_df.to_csv(category_dir / f"eff_{category}.csv")
+            logging.info(eff_df)
+            logging.info("\n")
+
+            cutflow_eff = format_cutflow_with_efficiency(combined_cutflow, eff_df)
+            cutflow_eff.to_csv(category_dir / f"cutflow_eff_{category}.csv")
 
     if args.postprocess:
         logging.info(workflow_config.to_yaml())

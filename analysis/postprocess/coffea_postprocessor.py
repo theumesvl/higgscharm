@@ -58,8 +58,36 @@ def save_process_histograms_by_sample(
     weight = 1
     xsec = dataset_config[sample]["xsec"]
     sumw = metadata["sumw"]
+    apply_normalization = False
+    normalization_factor = 1.0
+    if dataset_config[sample]["process"] == "tt" or dataset_config[sample]["process"] == "Single Top":
+        apply_normalization = True
     if dataset_config[sample]["era"] == "MC":
-        weight = (luminosities[year] * xsec) / sumw
+        #### normalization of top samples
+        '''
+        samples_to_normalize = [
+            "TTto2L2Nu", "TTto4Q", "TTtoLNu2Q",
+            "TWminusto2L2Nu",
+            "TbarWplusto2L2Nu",
+            "TWminustoLNu2Q",
+            "TbarWplusto4Q",
+            "TbarWplustoLNu2Q",
+            "TWminusto4Q",
+            "TbarBQ",
+            "TBbarQ",
+            "TbarQto2Q",
+            "TbarQtoLNu",
+            "TQbarto2Q",
+            "TQbartoLNu",
+            "TbarBtoLminusNuB",
+            "TBbartoLplusNuBbar",
+        ]
+        '''
+        if apply_normalization:
+            logging.info(f"Applying normalization factor {normalization_factor}\n")
+            weight = (luminosities[year] * xsec) / sumw * normalization_factor
+        else:
+            weight = (luminosities[year] * xsec) / sumw
 
     logging.info(f"luminosity [1/pb]: {luminosities[year]}")
     logging.info(f"xsec [pb]: {xsec}")
@@ -69,6 +97,7 @@ def save_process_histograms_by_sample(
     scaled_histograms = {}
     for variable in histograms:
         scaled_histograms[variable] = histograms[variable] * weight
+
 
     logging.info(f"saving histograms")
     save(scaled_histograms, f"{output_dir}/{sample}.coffea")
@@ -102,7 +131,7 @@ def save_process_histograms_by_process(
     extension = ".coffea"
     output_files = []
     for sample in process_samples_map[process]:
-        output_files += glob.glob(f"{output_dir}/{sample}*{extension}", recursive=True)
+        output_files += glob.glob(f"{output_dir}/{sample}{extension}", recursive=True)
 
     logging.info(f"saving {process} histograms")
     hist_to_accumulate = []
@@ -163,7 +192,110 @@ def get_cutflow(processed_histograms, category):
     )
     self.cutflow_df.to_csv(f"{output_path}/cutflow_{category}.csv")
 
+def find_kin_and_axis(processed_histograms, name="dilepton_mass"):
+    for process, histogram_dict in processed_histograms.items():
+        if process == "Data":
+            continue
+        for kin, hist in histogram_dict.items():
+            for axis_name in hist.axes.name:
+                if axis_name != "variation" and name in axis_name:
+                    return kin, axis_name
+    raise ValueError(f"No histogram with a '{name}' axis found.")
 
+
+def get_results_report(processed_histograms, category):
+    kin, aux_var = find_kin_and_axis(processed_histograms)
+
+    nominal = {}
+    variations = {}
+    mcstat_err = {}
+    bin_error_up = {}
+    bin_error_down = {}
+    for process in processed_histograms:
+        aux_hist = processed_histograms[process][kin]
+        nominal_selector = {"variation": "nominal"}
+        if "category" in aux_hist.axes.name:
+            nominal_selector["category"] = category
+        nominal_hist = aux_hist[nominal_selector].project(aux_var)
+        nominal[process] = nominal_hist
+
+        mcstat_err[process] = {}
+        bin_error_up[process] = {}
+        bin_error_down[process] = {}
+        mcstat_err2 = nominal_hist.variances()
+        mcstat_err[process] = np.sum(np.sqrt(mcstat_err2))
+        err2_up = mcstat_err2
+        err2_down = mcstat_err2
+
+        if process == "Data":
+            continue
+
+        for variation in get_variations_keys(processed_histograms):
+            if f"{variation}Up" not in aux_hist.axes["variation"]:
+                continue
+            selectorup = {"variation": f"{variation}Up"}
+            selectordown = {"variation": f"{variation}Down"}
+            if "category" in aux_hist.axes.name:
+                selectorup["category"] = category
+                selectordown["category"] = category
+            var_up = aux_hist[selectorup].project(aux_var).values()
+            var_down = aux_hist[selectordown].project(aux_var).values()
+            # Compute the uncertainties corresponding to the up/down variations
+            err_up = var_up - nominal_hist.values()
+            err_down = var_down - nominal_hist.values()
+            # Compute the flags to check which of the two variations (up and down) are pushing the nominal value up and down
+            up_is_up = err_up > 0
+            down_is_down = err_down < 0
+            # Compute the flag to check if the uncertainty is one-sided, i.e. when both variations are up or down
+            is_onesided = up_is_up ^ down_is_down
+            # Sum in quadrature of the systematic uncertainties taking into account if the uncertainty is one- or double-sided
+            err2_up_twosided = np.where(up_is_up, err_up**2, err_down**2)
+            err2_down_twosided = np.where(up_is_up, err_down**2, err_up**2)
+            err2_max = np.maximum(err2_up_twosided, err2_down_twosided)
+            err2_up_onesided = np.where(is_onesided & up_is_up, err2_max, 0)
+            err2_down_onesided = np.where(is_onesided & down_is_down, err2_max, 0)
+            err2_up_combined = np.where(is_onesided, err2_up_onesided, err2_up_twosided)
+            err2_down_combined = np.where(
+                is_onesided, err2_down_onesided, err2_down_twosided
+            )
+            # Sum in quadrature of the systematic uncertainty corresponding to a MC sample
+            err2_up += err2_up_combined
+            err2_down += err2_down_combined
+
+        bin_error_up[process] = np.sum(np.sqrt(err2_up))
+        bin_error_down[process] = np.sum(np.sqrt(err2_down))
+
+    mcs = []
+    results = {}
+    for process in nominal:
+        results[process] = {}
+
+        results[process]["events"] = np.sum(nominal[process].values())
+        if process == "Data":
+            results[process]["stat err"] = np.sqrt(np.sum(nominal[process].values()))
+        else:
+            mcs.append(process)
+            results[process]["stat err"] = mcstat_err[process]
+            results[process]["syst err up"] = bin_error_up[process]
+            results[process]["syst err down"] = bin_error_down[process]
+    df = pd.DataFrame(results)
+    df["Total background"] = df.loc[["events"], mcs].sum(axis=1)
+    df.loc["stat err", "Total background"] = np.sqrt(
+        np.sum(df.loc["stat err", mcs] ** 2)
+    )
+    df.loc["syst err up", "Total background"] = np.sqrt(
+        np.sum(df.loc["syst err up", mcs] ** 2)
+    )
+    df.loc["syst err down", "Total background"] = np.sqrt(
+        np.sum(df.loc["syst err down", mcs] ** 2)
+    )
+    df = df.T
+    df.loc["Data/Total background"] = (
+        df.loc["Data", ["events"]] / df.loc["Total background", ["events"]]
+    )
+    return df
+'''
+##backup of original processor
 def get_results_report(processed_histograms, category):
     nominal = {}
     for process in processed_histograms:
@@ -248,3 +380,4 @@ def get_results_report(processed_histograms, category):
         df.loc["Data", ["events"]] / df.loc["Total background", ["events"]]
     )
     return df
+'''
