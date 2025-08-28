@@ -156,6 +156,20 @@ def trigger_match(leptons, trigobjs, hlt_path):
             "id": abs(trigobjs.id) == 13,
             "filterbit": trigobjs.filterBits & (0x1 << 0) > 0,
         },
+        # filterbit: 0 => TrkIsoVVL
+        # id: 13 => mu
+        "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ": {
+            "pt": trigobjs.pt > 7,
+            "id": abs(trigobjs.id) == 13,
+            "filterbit": trigobjs.filterBits & (0x1 << 0) > 0,
+        },
+        # filterbit: 0 => TrkIsoVVL
+        # id: 13 => mu
+        "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL": {
+            "pt": trigobjs.pt > 7,
+            "id": abs(trigobjs.id) == 13,
+            "filterbit": trigobjs.filterBits & (0x1 << 0) > 0,
+        },
         # filterbit: 1 => 1e (WPTight)
         # id: 11 => ele
         "Ele30_WPTight_Gsf": {
