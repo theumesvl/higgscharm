@@ -172,7 +172,7 @@ def apply_jerc_corrections(
                 "massRaw": "mass_raw",
             }
         )
-    if era == "MC":
+    if era == "mc":
         # create MC factory with jec, jer and junc stack
         stack = JECStack(jec_options)
         jec_factory = CorrectedJetsFactory(jec_name_map, stack)

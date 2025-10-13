@@ -5,8 +5,31 @@ from pathlib import Path
 
 MC_DATASETS = {
     "semilep_ttbar": ["TTto2L2Nu"],
-    "ttbar": ["TTto2L2Nu", "TTto4Q", "TTtoLNu2Q"],
+    "ttbar": ["TTto2L2Nu", "TTto2L2Nu-ext", "TTto4Q", "TTto4Q-ext", "TTtoLNu2Q", "TTtoLNu2Q-ext"],
+    "ttbar_noExt": ["TTto2L2Nu", "TTto4Q", "TTtoLNu2Q"],
     "singletop": [
+        "TWminusto2L2Nu",
+        "TWminusto2L2Nu-ext",
+        "TbarWplusto2L2Nu",
+        "TbarWplusto2L2Nu-ext",
+        "TWminustoLNu2Q",
+        "TWminustoLNu2Q-ext",
+        "TbarWplusto4Q",
+        "TbarWplusto4Q-ext",
+        "TbarWplustoLNu2Q",
+        "TbarWplustoLNu2Q-ext",
+        "TWminusto4Q",
+        "TWminusto4Q-ext",
+        "TbarBQ",
+        "TBbarQ",
+        "TbarQto2Q",
+        "TbarQtoLNu",
+        "TQbarto2Q",
+        "TQbartoLNu",
+        "TbarBtoLminusNuB",
+        "TBbartoLplusNuBbar",
+    ],
+    "singletop_noExt": [
         "TWminusto2L2Nu",
         "TbarWplusto2L2Nu",
         "TWminustoLNu2Q",
@@ -109,9 +132,9 @@ PD_DATASETS = {
 }
 DATASETS = {
     "ztoee": {"mc": ["dyjets", "ttbar", "singletop", "diboson"], "data": ["EGamma"]},
-    "ztomumu": {"mc": ["dyjets", "ttbar", "singletop", "diboson"], "data": ["Muon"]},
+    "ztomumu": {"mc": ["dyjets", "ttbar", "singletop", "diboson"], "data": ["SingleMuon", "DoubleMuon", "Muon"]},
     "hww": {
-        "mc": ["ttbar", "singletop", "diboson", "dyjets", "vjets", "WG", "signalHWW"],
+        "mc": ["ttbar_noExt", "singletop_noExt", "diboson", "dyjets", "vjets", "WG"],
         "data": ["SingleMuon", "DoubleMuon", "Muon", "MuonEG", "EGamma"],
     },
     "zzto4l": {
