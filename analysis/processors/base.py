@@ -121,6 +121,7 @@ class BaseProcessor(processor.ProcessorABC):
                     pruned_ev=pruned_ev,
                     year=year,
                     dataset=dataset,
+                    nano_version=self.nano_version,
                     workflow_config=self.workflow_config,
                 )
                 # save cutflow to metadata
@@ -138,6 +139,7 @@ class BaseProcessor(processor.ProcessorABC):
                         pruned_ev=pruned_ev_cutflow,
                         year=year,
                         dataset=dataset,
+                        nano_version=self.nano_version,
                         workflow_config=self.workflow_config,
                     )
                     output["metadata"][category]["cutflow"][cut_name] = ak.sum(
