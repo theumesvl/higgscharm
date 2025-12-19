@@ -75,7 +75,6 @@ event_selection:
     one_electron: ak.num(objects['electrons']) == 1
     one_muon: ak.num(objects['muons']) == 1
     atleast_one_cjet: ak.num(objects['cjets']) > 0
-    atleast_one_jet: ak.num(objects['jets']) > 0
     one_ll_pair: ak.num(objects['ll_pair']) == 1
     one_muon_one_electron: ak.all(((abs(objects['ll_pair'].l1.pdgId) == 11) & (abs(objects['ll_pair'].l2.pdgId) == 13)) | ((abs(objects['ll_pair'].l1.pdgId) == 13) & (abs(objects['ll_pair'].l2.pdgId) == 11)), axis=1)
     atleast_two_cjets: ak.num(objects['cjets']) > 1
@@ -86,7 +85,7 @@ event_selection:
     dilepton_mass_signal: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass <= 72, axis=1)
     dilepton_mass_top_CR: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 72, axis=1)
   categories:
-    high_mll_CR_jets:
+    top_CR_cjets:
       - atleast_one_goodvertex
       - lumimask
       - met_filters
@@ -94,10 +93,10 @@ event_selection:
       - met_45
       - one_ll_pair
       - one_muon_one_electron
-      - atleast_one_jet
-      - transverse_mass_signal
+      - atleast_two_cjets
+      - transverse_mass_top_CR
       - dilepton_mass_top_CR
-    high_mll_CR_noNjetCut:  
+    top_CR_bjets:  
       - atleast_one_goodvertex
       - lumimask
       - met_filters
@@ -105,7 +104,8 @@ event_selection:
       - met_45
       - one_ll_pair
       - one_muon_one_electron
-      - transverse_mass_signal
+      - atleast_two_bjets
+      - transverse_mass_top_CR
       - dilepton_mass_top_CR
 corrections:
   objects:

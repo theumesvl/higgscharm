@@ -15,7 +15,7 @@ if __name__ == "__main__":
         "--image",
         dest="image",
         type=str,
-        default="/cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest-py3.10",
+        default="/cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask-almalinux9:2025.10.1-py3.10",
     )
     args = parser.parse_args()
 

@@ -15,14 +15,14 @@ object_selection:
       - delta_r_higher(events.Electron, objects['muons'], 0.4)
   leptons:
     field: select_hww_leptons
-  ll_pair:
-    field: select_hww_ll_pair
+  zcandidates:
+    field: select_hww_zcandidates
     cuts:
-      - objects["ll_pair"].l1.pt > 20
-      - objects["ll_pair"].l2.pt > 10  
-      - (objects["ll_pair"].l1 + objects["ll_pair"].l2).pt > 30
-      - (objects["ll_pair"].l1.charge + objects["ll_pair"].l2.charge) == 0 
-      - (objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 12
+      - objects["zcandidates"].l1.pt > 20
+      - objects["zcandidates"].l2.pt > 10  
+      - (objects["zcandidates"].l1 + objects["zcandidates"].l2).pt > 30
+      - (objects["zcandidates"].l1.charge + objects["zcandidates"].l2.charge) == 0 
+      - (objects["zcandidates"].l1 + objects["zcandidates"].l2).mass > 12
   jets:
     field: events.Jet
     cuts:
@@ -75,37 +75,54 @@ event_selection:
     one_electron: ak.num(objects['electrons']) == 1
     one_muon: ak.num(objects['muons']) == 1
     atleast_one_cjet: ak.num(objects['cjets']) > 0
-    atleast_one_jet: ak.num(objects['jets']) > 0
-    one_ll_pair: ak.num(objects['ll_pair']) == 1
-    one_muon_one_electron: ak.all(((abs(objects['ll_pair'].l1.pdgId) == 11) & (abs(objects['ll_pair'].l2.pdgId) == 13)) | ((abs(objects['ll_pair'].l1.pdgId) == 13) & (abs(objects['ll_pair'].l2.pdgId) == 11)), axis=1)
+    one_muon_one_electron: ak.all(((abs(objects['zcandidates'].l1.pdgId) == 11) & (abs(objects['zcandidates'].l2.pdgId) == 13)) | ((abs(objects['zcandidates'].l1.pdgId) == 13) & (abs(objects['zcandidates'].l2.pdgId) == 11)), axis=1)
     atleast_two_cjets: ak.num(objects['cjets']) > 1
     atleast_one_bjet: ak.num(objects['bjets']) > 0
     atleast_two_bjets: ak.num(objects['bjets']) > 1
     transverse_mass_signal: ak.all(((objects["mTl2"] > 30) & (objects["mTll"] > 60)), axis=1)
     transverse_mass_top_CR: ak.all(((objects["mTl2"] > 30) & (objects["mTll"] <= 60)), axis=1)
-    dilepton_mass_signal: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass <= 72, axis=1)
-    dilepton_mass_top_CR: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 72, axis=1)
+    dilepton_mass_signal: ak.all((objects["zcandidates"].l1 + objects["zcandidates"].l2).mass <= 72, axis=1)
+    dilepton_mass_top_CR: ak.all((objects["zcandidates"].l1 + objects["zcandidates"].l2).mass > 72, axis=1)
   categories:
-    high_mll_CR_jets:
+    base_atleast1cjet:
       - atleast_one_goodvertex
       - lumimask
       - met_filters
       - trigger
       - met_45
-      - one_ll_pair
-      - one_muon_one_electron
-      - atleast_one_jet
-      - transverse_mass_signal
+      - atleast_one_cjet
+      - one_electron
+      - one_muon
+    base_atleast1bjet:
+      - atleast_one_goodvertex
+      - lumimask
+      - met_filters
+      - trigger
+      - met_45
+      - atleast_one_bjet
+      - one_electron
+      - one_muon
+    top_CR_cjets:
+      - atleast_one_goodvertex
+      - lumimask
+      - met_filters
+      - trigger
+      - met_45
+      - one_electron
+      - one_muon
+      - atleast_two_cjets
+      - transverse_mass_top_CR
       - dilepton_mass_top_CR
-    high_mll_CR_noNjetCut:  
+    top_CR_bjets:  
       - atleast_one_goodvertex
       - lumimask
       - met_filters
       - trigger
       - met_45
-      - one_ll_pair
-      - one_muon_one_electron
-      - transverse_mass_signal
+      - one_electron
+      - one_muon
+      - atleast_two_bjets
+      - transverse_mass_top_CR
       - dilepton_mass_top_CR
 corrections:
   objects:
@@ -155,7 +172,7 @@ histogram_config:
         - 450
         - 500
       label: $m(\ell\ell)$ [GeV]
-      expression: (objects["ll_pair"].l1 + objects["ll_pair"].l2).mass
+      expression: (objects["zcandidates"].l1 + objects["zcandidates"].l2).mass
     dilepton_pt:
       type: Variable
       edges:
@@ -177,7 +194,21 @@ histogram_config:
         - 325
         - 350
       label: $p_T(\ell\ell)$ [GeV]
-      expression: (objects["ll_pair"].l1 + objects["ll_pair"].l2).pt
+      expression: (objects["zcandidates"].l1 + objects["zcandidates"].l2).pt
+    dilepton_dr:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 5
+      label: $\Delta R(\ell_1, \ell_2)$
+      expression: objects['zcandidates'].l1.delta_r(objects['zcandidates'].l2)
+    dilepton_deta:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 5
+      label: $|\Delta \eta(\ell_1, \ell_2)|$
+      expression: np.abs(objects['zcandidates'].l1.eta - objects['zcandidates'].l2.eta)
     met_pt:
       type: Variable
       edges:
@@ -231,7 +262,7 @@ histogram_config:
         - 300
         - 350
       label: $p_T(\ell_1)$ [GeV]
-      expression: objects["ll_pair"].l1.pt
+      expression: objects["zcandidates"].l1.pt
     lepton2_pt:
       type: Variable
       edges:
@@ -252,7 +283,7 @@ histogram_config:
         - 210
         - 240
       label: $p_T(\ell_2)$ [GeV]
-      expression: objects["ll_pair"].l2.pt
+      expression: objects["zcandidates"].l2.pt
     mtl1:
       type: Variable
       edges:
@@ -349,50 +380,78 @@ histogram_config:
       stop: 3.14159
       label: Jets $\phi$
       expression: objects['jets'].phi
-    cjet_cand_flavour:
-      type: IntCategory
-      categories:
-        - 0
-        - 4
-        - 5
-      label: Candidate c-jet HadronFlavour
-      expression: ak.pad_none(objects['candidate_cjet'], target=1).hadronFlavour
-    cjet_cand_cvsl_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Candidate c-jet CvsL (PNet)
-      expression: ak.pad_none(objects['candidate_cjet'], target=1).btagPNetCvL
-    cjet_cand_cvsb_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Candidate c-jet CvsB (PNet)
-      expression: ak.pad_none(objects['candidate_cjet'], target=1).btagPNetCvB
-    bjet_cand_flavour:
-      type: IntCategory
-      categories:
-        - 0
-        - 4
-        - 5
-      label: Candidate b-jet HadronFlavour
-      expression: ak.pad_none(objects['candidate_bjet'], target=1).hadronFlavour
-    bjet_cand_cvsl_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Candidate b-jet CvsL (PNet)
-      expression: ak.pad_none(objects['candidate_bjet'], target=1).btagPNetCvL
-    bjet_cand_cvsb_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Candidate b-jet CvsB (PNet)
-      expression: ak.pad_none(objects['candidate_bjet'], target=1).btagPNetCvB
+    cjet_pt:
+      type: Variable
+      edges:
+        - 20
+        - 40
+        - 60
+        - 80
+        - 100
+        - 120
+        - 150
+        - 180
+        - 210
+        - 240
+        - 300
+        - 350
+        - 400
+      label: c-jets $p_T$ [GeV]
+      expression: objects['cjets'].pt
+    bjet_pt:
+      type: Variable
+      edges:
+        - 20
+        - 40
+        - 60
+        - 80
+        - 100
+        - 120
+        - 150
+        - 180
+        - 210
+        - 240
+        - 300
+        - 350
+        - 400
+      label: b-jets $p_T$ [GeV]
+      expression: objects['bjets'].pt
+    cjet_cand_pt:
+      type: Variable
+      edges:
+        - 20
+        - 40
+        - 60
+        - 80
+        - 100
+        - 120
+        - 150
+        - 180
+        - 210
+        - 240
+        - 300
+        - 350
+        - 400
+      label: Candidate c-jet $p_T$ [GeV]
+      expression: objects['candidate_cjet'].pt
+    bjet_cand_pt:
+      type: Variable
+      edges:
+        - 20
+        - 40
+        - 60
+        - 80
+        - 100
+        - 120
+        - 150
+        - 180
+        - 210
+        - 240
+        - 300
+        - 350
+        - 400
+      label: Candidate b-jet $p_T$ [GeV]
+      expression: objects['candidate_bjet'].pt
     jet_multiplicity:
       type: Integer
       start: 0
@@ -411,33 +470,15 @@ histogram_config:
       stop: 14
       label: b-jets multiplicity
       expression: ak.num(objects['bjets'])
-    leadingjet_flavour:
-      type: IntCategory
-      categories:
-        - 0
-        - 4
-        - 5
-      label: Jet HadronFlavour
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].hadronFlavour
-    leadingjet_cvsl_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading jet CvsL (PNet)
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvL
-    leadingjet_cvsb_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading jet CvsB (PNet)
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvB
   layout:
     dilepton_mass:
       - dilepton_mass
     dilepton_pt:
       - dilepton_pt
+    dilepton_dr:
+      - dilepton_dr
+    dilepton_deta:
+      - dilepton_deta
     met:
       - met_pt
       - met_phi
@@ -449,26 +490,22 @@ histogram_config:
       - mtl2
       - mtll
     candidate_cjet:
-      - cjet_cand_flavour
-      - cjet_cand_cvsl_pnet
-      - cjet_cand_cvsb_pnet
+      - cjet_cand_pt
     candidate_bjet:
-      - bjet_cand_flavour
-      - bjet_cand_cvsl_pnet
-      - bjet_cand_cvsb_pnet
+      - bjet_cand_pt
     jets:
       - jet_pt
       - jet_eta
       - jet_phi
+    c-jets:
+      - cjet_pt
+    b-jets:
+      - bjet_pt
     jet_multiplicity:
       - jet_multiplicity
     cjet_multiplicity:
       - cjet_multiplicity
     bjet_multiplicity:
       - bjet_multiplicity
-    leading_jet:
-      - leadingjet_flavour
-      - leadingjet_cvsb_pnet
-      - leadingjet_cvsl_pnet
   add_syst_axis: true
   add_weight: true
