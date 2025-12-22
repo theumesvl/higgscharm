@@ -7,29 +7,43 @@ datasets:
     - tt
     - singletop
     - diboson
+    - ww
+    - wz
+    - zz
+    - wg
+    - v+jets
 object_selection:
   muons:
     field: events.Muon
     cuts:
-      - events.Muon.pt > 15
+      - events.Muon.pt > 10
       - np.abs(events.Muon.eta) < 2.4
       - working_points.muon_iso(events, 'tight')
       - working_points.muon_id(events, 'tight')
   electrons:
     field: events.Electron
     cuts:
-      - events.Electron.pt > 15
+      - events.Electron.pt > 10
       - np.abs(events.Electron.eta) < 2.5
       - working_points.electron_id(events, 'wp80iso')
       - delta_r_higher(events.Electron, objects['muons'], 0.4)
   leptons:
     field: select_hww_leptons
-  zcandidates:
-    field: select_hww_zcandidates
+  ll_pair:
+    field: select_hww_ll_pair
     cuts:
-      - (objects["zcandidates"].l1 + objects["zcandidates"].l2).pt > 30
-      - (objects["zcandidates"].l1.charge + objects["zcandidates"].l2.charge) == 0 
-      - (objects["zcandidates"].l1 + objects["zcandidates"].l2).mass > 12
+      - objects["ll_pair"].l1.pt > 20
+      - objects["ll_pair"].l2.pt > 10
+      - (objects["ll_pair"].l1 + objects["ll_pair"].l2).pt > 30
+      - (objects["ll_pair"].l1.charge + objects["ll_pair"].l2.charge) == 0
+      - (objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 12
+  jets:
+    field: events.Jet
+    cuts:
+      - events.Jet.pt > 30
+      - np.abs(events.Jet.eta) < 2.4
+      - working_points.jet_id(events, 'tightlepveto')
+      - delta_r_higher(events.Jet, objects['leptons'], 0.4)
   cjets:
     field: events.Jet
     cuts:
@@ -38,16 +52,26 @@ object_selection:
       - working_points.jet_id(events, 'tightlepveto')
       - working_points.jet_particlenet_c(events, 'medium', year)
       - delta_r_higher(events.Jet, objects['leptons'], 0.4)
-  candidate_jet:
+  bjets:
+    field: events.Jet
+    cuts:
+      - events.Jet.pt > 20
+      - np.abs(events.Jet.eta) < 2.4
+      - working_points.jet_id(events, 'tightlepveto')
+      - working_points.jet_particlenet_b(events, 'medium', year)
+      - delta_r_higher(events.Jet, objects['leptons'], 0.4)
+  candidate_cjet:
     field: select_candidate_cjet
+  candidate_bjet:
+    field: select_candidate_bjet
   met:
     field: events.PuppiMET
-  mll:
-    field: select_hww_mll
-  ml1:
-    field: select_hww_ml1
-  ml2: 
-    field: select_hww_ml2
+  mTll:
+    field: select_hww_mTll
+  mTl1:
+    field: select_hww_mTl1
+  mTl2: 
+    field: select_hww_mTl2
 event_selection:
   hlt_paths:
     MuonEG:
@@ -64,12 +88,16 @@ event_selection:
     met_45: objects['met'].pt > 45
     one_electron: ak.num(objects['electrons']) == 1
     one_muon: ak.num(objects['muons']) == 1
+    one_muon_one_electron: ak.all(((abs(objects['ll_pair'].l1.pdgId) == 11) & (abs(objects['ll_pair'].l2.pdgId) == 13)) | ((abs(objects['ll_pair'].l1.pdgId) == 13) & (abs(objects['ll_pair'].l2.pdgId) == 11)), axis=1)
+    one_ll_pair: ak.num(objects['ll_pair']) == 1
     atleast_one_cjet: ak.num(objects['cjets']) > 0
     atleast_two_cjets: ak.num(objects['cjets']) > 1
-    transverse_mass_signal: ak.all((objects["ml2"] > 30) & (objects["mll"] > 60), axis=1)
-    transverse_mass_top: ak.all((objects["ml2"] > 30) & (objects["mll"] <= 60), axis=1)
-    dilepton_mass_signal: ak.all(objects["mll"] <= 72, axis=1)
-    dilepton_mass_top: ak.all(objects["mll"] > 72, axis=1)
+    zero_jets: ak.num(objects['jets']) == 0
+    atleast_one_jet: ak.num(objects['jets']) > 0
+    transverse_mass_signal: ak.all((objects["mTl2"] > 30) & (objects["mTll"] > 60), axis=1)
+    transverse_mass_top_CR: ak.all((objects["mTl2"] > 30) & (objects["mTll"] <= 60), axis=1)
+    dilepton_mass_signal: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass <= 72, axis=1)
+    dilepton_mass_top_CR: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 72, axis=1)
   categories:
     base:
       - atleast_one_goodvertex
@@ -77,8 +105,19 @@ event_selection:
       - met_filters
       - trigger
       - met_45
-      - one_electron
-      - one_muon
+      - one_ll_pair
+      - one_muon_one_electron
+    high_mll_CR_0jet:
+      - atleast_one_goodvertex
+      - lumimask
+      - met_filters
+      - trigger
+      - met_45
+      - one_ll_pair
+      - one_muon_one_electron
+      - zero_jets
+      - transverse_mass_signal
+      - dilepton_mass_top_CR
 corrections:
   objects:
     - jec
