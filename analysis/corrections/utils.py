@@ -34,6 +34,7 @@ EGAMMA_JSONS = {"electron_ss": ["SS", "electronSS.json.gz"]}
 BTV_PATH = "/cvmfs/cms-griddata.cern.ch/cat/metadata/BTV"
 BTV_JSONS = {
     "ctag": "ctagging.json.gz",
+    "btag": "btagging.json.gz",
 }
 BTV_YEARS = {
     "2022preEE": "Run3-22CDSep23-Summer22-NanoAODv12/2025-08-20",
@@ -110,6 +111,16 @@ def get_pnet_ctag_mask(jets, wp, year):
     pnet_cvsl_wp = ctag_wps_evaluator.evaluate(wp_map[wp], "CvL")
     pass_ctag_wp = (jets.btagPNetCvB > pnet_cvsb_wp) & (jets.btagPNetCvL > pnet_cvsl_wp)
     return pass_ctag_wp
+
+def get_pnet_btag_mask(jets, wp, year):
+    bset = correctionlib.CorrectionSet.from_file(
+        get_btv_json(json_name="btag", year=year)
+    )
+    wp_map = {"tight": "T", "medium": "M", "loose": "L"}
+    btag_wps_evaluator = bset["particleNet_wp_values"]
+    pnet_bvsall_wp = btag_wps_evaluator.evaluate(wp_map[wp])
+    pass_btag_wp = (jets.btagPNetB > pnet_bvsall_wp)
+    return pass_btag_wp
 
 
 def get_muon_hlt_json(year: str) -> str:

@@ -1,5 +1,6 @@
 import numpy as np
 from analysis.corrections.utils import get_pnet_ctag_mask
+from analysis.corrections.utils import get_pnet_btag_mask
 
 
 class WorkingPoints:
@@ -166,3 +167,6 @@ class WorkingPoints:
 
     def jet_particlenet_c(self, events, wp, year):
         return get_pnet_ctag_mask(jets=events.Jet, wp=wp, year=year)
+
+    def jet_particlenet_b(self, events, wp, year):
+        return get_pnet_btag_mask(jets=events.Jet, wp=wp, year=year)
