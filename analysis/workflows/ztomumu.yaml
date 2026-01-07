@@ -5,7 +5,9 @@ datasets:
     - dy_nlo
     - tt
     - singletop
-    - diboson
+    - ww
+    - wz
+    - zz
 object_selection:
   muons:
     field: events.Muon
