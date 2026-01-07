@@ -4,9 +4,9 @@ datasets:
     - electron
     - muon_electron
   mc:
+    - dy_nlo
     - tt
     - singletop
-    - diboson
     - ww
     - wz
     - zz
@@ -140,9 +140,59 @@ corrections:
       - trigger: false
 histogram_config:
   axes:
+    dilepton_mass:
+      type: Variable
+      edges:
+        - 0
+        - 12
+        - 20
+        - 40
+        - 60
+        - 72
+        - 80
+        - 100
+        - 120
+        - 140
+        - 160
+        - 180
+        - 200
+        - 225
+        - 250
+        - 275
+        - 300
+        - 325
+        - 350
+        - 400
+        - 450
+        - 500
+      label: $m(\ell\ell)$ [GeV]
+      expression: (objects["ll_pair"].l1 + objects["ll_pair"].l2).mass
+    dilepton_pt:
+      type: Variable
+      edges:
+        - 0
+        - 30
+        - 40
+        - 60
+        - 80
+        - 100
+        - 120
+        - 140
+        - 160
+        - 180
+        - 200
+        - 225
+        - 250
+        - 275
+        - 300
+        - 325
+        - 350
+      label: $p_T(\ell\ell)$ [GeV]
+      expression: (objects["ll_pair"].l1 + objects["ll_pair"].l2).pt
     met_pt:
       type: Variable
       edges:
+        - 0
         - 45
         - 55
         - 65
@@ -162,9 +212,6 @@ histogram_config:
         - 250
         - 300
         - 350
-        - 400
-        - 500
-        - 600
       label: $p_T^{miss}$ [GeV]
       expression: objects['met'].pt
     met_phi:
@@ -177,14 +224,15 @@ histogram_config:
     lepton1_pt:
       type: Variable
       edges:
-        - 15
-        - 25
-        - 35
-        - 45
-        - 55
-        - 65
-        - 75
-        - 85
+        - 0
+        - 20
+        - 30
+        - 40
+        - 50
+        - 60
+        - 70
+        - 80
+        - 90
         - 100
         - 120
         - 150
@@ -193,33 +241,29 @@ histogram_config:
         - 240
         - 300
         - 350
-        - 400
-        - 500
       label: $p_T(\ell_1)$ [GeV]
-      expression: objects["zcandidates"].l1.pt
+      expression: objects["ll_pair"].l1.pt
     lepton2_pt:
       type: Variable
       edges:
-        - 15
-        - 25
-        - 35
-        - 45
-        - 55
-        - 65
-        - 75
-        - 85
+        - 0
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
+        - 60
+        - 70
+        - 80
+        - 90
         - 100
         - 120
         - 150
         - 180
         - 210
         - 240
-        - 300
-        - 350
-        - 400
-        - 500
       label: $p_T(\ell_2)$ [GeV]
-      expression: objects["zcandidates"].l2.pt
+      expression: objects["ll_pair"].l2.pt
     mtl1:
       type: Variable
       edges:
@@ -241,12 +285,13 @@ histogram_config:
         - 400
         - 500
       label: $m_T^{\ell_1}$ [GeV]
-      expression: objects['ml1']
+      expression: objects['mTl1']
     mtl2:
       type: Variable
       edges:
         - 0
         - 20
+        - 30
         - 40
         - 60
         - 80
@@ -259,11 +304,8 @@ histogram_config:
         - 230
         - 260
         - 300
-        - 350
-        - 400
-        - 500
       label: $m_T^{\ell_2}$ [GeV]
-      expression: objects['ml2']
+      expression: objects['mTl2']
     mtll:
       type: Variable
       edges:
@@ -285,7 +327,7 @@ histogram_config:
         - 400
         - 500
       label: $m_T^{\ell \ell}$ [GeV]
-      expression: objects['mll']
+      expression: objects['mTll']
     jet_pt:
       type: Variable
       edges:
@@ -302,33 +344,89 @@ histogram_config:
         - 300
         - 350
         - 400
-        - 450
-        - 500
-        - 600
-        - 800
-      label: Candidate c-jet $p_T$ [GeV]
-      expression: objects['candidate_cjet'].pt
+      label: Jets $p_T$ [GeV]
+      expression: objects['jets'].pt
     jet_eta:
       type: Regular
       bins: 50
       start: -2.4
       stop: 2.4
-      label: Candidate c-jet $\eta$
-      expression: objects['candidate_cjet'].eta
+      label: Jets $\eta$
+      expression: objects['jets'].eta
     jet_phi:
       type: Regular
       bins: 50
       start: -3.14159
       stop: 3.14159
-      label: Candidate c-jet $\phi$
-      expression: objects['candidate_cjet'].phi
+      label: Jets $\phi$
+      expression: objects['jets'].phi
+    cjet_cand_flavour:
+      type: IntCategory
+      categories:
+        - 0
+        - 4
+        - 5
+      label: Candidate c-jet HadronFlavour
+      expression: ak.pad_none(objects['candidate_cjet'], target=1).hadronFlavour
+    cjet_cand_cvsl_pnet:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 1
+      label: Candidate c-jet CvsL (PNet)
+      expression: ak.pad_none(objects['candidate_cjet'], target=1).btagPNetCvL
+    cjet_cand_cvsb_pnet:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 1
+      label: Candidate c-jet CvsB (PNet)
+      expression: ak.pad_none(objects['candidate_cjet'], target=1).btagPNetCvB
     jet_multiplicity:
+      type: Integer
+      start: 0
+      stop: 14
+      label: Jets multiplicity
+      expression: ak.num(objects['jets'])
+    cjet_multiplicity:
       type: Integer
       start: 0
       stop: 14
       label: c-jets multiplicity
       expression: ak.num(objects['cjets'])
+    bjet_multiplicity:
+      type: Integer
+      start: 0
+      stop: 14
+      label: b-jets multiplicity
+      expression: ak.num(objects['bjets'])
+    leadingjet_flavour:
+      type: IntCategory
+      categories:
+        - 0
+        - 4
+        - 5
+      label: Jet HadronFlavour
+      expression: ak.pad_none(objects['jets'], target=2)[:, 0].hadronFlavour
+    leadingjet_cvsl_pnet:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 1
+      label: Leading jet CvsL (PNet)
+      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvL
+    leadingjet_cvsb_pnet:
+      type: Regular
+      bins: 50
+      start: 0
+      stop: 1
+      label: Leading jet CvsB (PNet)
+      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvB
   layout:
+    dilepton_mass:
+      - dilepton_mass
+    dilepton_pt:
+      - dilepton_pt
     met:
       - met_pt
       - met_phi
@@ -339,11 +437,24 @@ histogram_config:
       - mtl1
       - mtl2
       - mtll
-    candidate_jet:
+    candidate_cjet:
+      - cjet_cand_flavour
+      - cjet_cand_cvsl_pnet
+      - cjet_cand_cvsb_pnet
+    jets:
       - jet_pt
       - jet_eta
       - jet_phi
     jet_multiplicity:
       - jet_multiplicity
+    cjet_multiplicity:
+      - cjet_multiplicity
+    bjet_multiplicity:
+      - bjet_multiplicity
+    leading_jet:
+      - leadingjet_flavour
+      - leadingjet_cvsb_pnet
+      - leadingjet_cvsl_pnet
   add_syst_axis: true
   add_weight: true
+
