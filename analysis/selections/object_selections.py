@@ -499,7 +499,7 @@ class ObjectSelector:
         leptons = ak.concatenate(
             [self.objects["muons"], self.objects["electrons"]], axis=1
         )
-        leptons = leptons[ak.argsort(leptons.pt, axis=1)]
+        leptons = leptons[ak.argsort(leptons.pt, ascending=False, axis=1)]
         self.objects[obj_name] = ak.zip(
             {
                 "pt": leptons.pt,
@@ -512,6 +512,7 @@ class ObjectSelector:
             with_name="PtEtaPhiMCandidate",
             behavior=candidate.behavior,
         )
+
     def select_hww_ll_pair(self, obj_name):
         has_lepton = ak.num(self.objects["leptons"]) >= 1
         #self.objects["first_leptons"] = ak.where(has_lepton, self.objects["leptons"][:, 0], None)
