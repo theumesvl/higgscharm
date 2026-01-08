@@ -44,8 +44,6 @@ object_selection:
       - np.abs(events.Jet.eta) < 2.4
       - working_points.jet_id(events, 'tightlepveto')
       - delta_r_higher(events.Jet, objects['leptons'], 0.4)
-  eventJets:
-    field: events.Jet
   cjets:
     field: events.Jet
     cuts:
@@ -95,7 +93,6 @@ event_selection:
     atleast_one_cjet: ak.num(objects['cjets']) > 0
     atleast_two_cjets: ak.num(objects['cjets']) > 1
     zero_jets: ak.num(objects['jets']) == 0
-    zero_eventJets: ak.num(objects['eventJets']) == 0
     atleast_one_jet: ak.num(objects['jets']) > 0
     transverse_mass_signal: ak.all((objects["mTl2"] > 30) & (objects["mTll"] > 60), axis=1)
     transverse_mass_top_CR: ak.all((objects["mTl2"] > 30) & (objects["mTll"] <= 60), axis=1)

@@ -99,7 +99,7 @@ event_selection:
     dilepton_mass_signal: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass <= 72, axis=1)
     dilepton_mass_top_CR: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 72, axis=1)
   categories:
-    top_CR:
+    high_mll_CR_NoNjetCut:
       - atleast_one_goodvertex
       - lumimask
       - met_filters
@@ -107,8 +107,7 @@ event_selection:
       - met_45
       - one_ll_pair
       - one_muon_one_electron
-      - atleast_two_cjets
-      - transverse_mass_top_CR
+      - transverse_mass_signal
       - dilepton_mass_top_CR
 corrections:
   objects:

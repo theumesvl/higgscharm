@@ -99,7 +99,7 @@ event_selection:
     dilepton_mass_signal: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass <= 72, axis=1)
     dilepton_mass_top_CR: ak.all((objects["ll_pair"].l1 + objects["ll_pair"].l2).mass > 72, axis=1)
   categories:
-    top_CR:
+    high_mll_CR_0jet:
       - atleast_one_goodvertex
       - lumimask
       - met_filters
@@ -107,8 +107,8 @@ event_selection:
       - met_45
       - one_ll_pair
       - one_muon_one_electron
-      - atleast_two_cjets
-      - transverse_mass_top_CR
+      - zero_jets
+      - transverse_mass_signal
       - dilepton_mass_top_CR
 corrections:
   objects:
@@ -320,38 +320,6 @@ histogram_config:
         - 500
       label: $m_T^{\ell \ell}$ [GeV]
       expression: objects['mTll']
-    jet_pt:
-      type: Variable
-      edges:
-        - 20
-        - 40
-        - 60
-        - 80
-        - 100
-        - 120
-        - 150
-        - 180
-        - 210
-        - 240
-        - 300
-        - 350
-        - 400
-      label: Jets $p_T$ [GeV]
-      expression: objects['jets'].pt
-    jet_eta:
-      type: Regular
-      bins: 50
-      start: -2.4
-      stop: 2.4
-      label: Jets $\eta$
-      expression: objects['jets'].eta
-    jet_phi:
-      type: Regular
-      bins: 50
-      start: -3.14159
-      stop: 3.14159
-      label: Jets $\phi$
-      expression: objects['jets'].phi
     cjet_cand_flavour:
       type: IntCategory
       categories:
@@ -374,12 +342,6 @@ histogram_config:
       stop: 1
       label: Candidate c-jet CvsB (PNet)
       expression: ak.pad_none(objects['candidate_cjet'], target=1).btagPNetCvB
-    jet_multiplicity:
-      type: Integer
-      start: 0
-      stop: 14
-      label: Jets multiplicity
-      expression: ak.num(objects['jets'])
     cjet_multiplicity:
       type: Integer
       start: 0
@@ -392,28 +354,6 @@ histogram_config:
       stop: 14
       label: b-jets multiplicity
       expression: ak.num(objects['bjets'])
-    leadingjet_flavour:
-      type: IntCategory
-      categories:
-        - 0
-        - 4
-        - 5
-      label: Jet HadronFlavour
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].hadronFlavour
-    leadingjet_cvsl_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading jet CvsL (PNet)
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvL
-    leadingjet_cvsb_pnet:
-      type: Regular
-      bins: 50
-      start: 0
-      stop: 1
-      label: Leading jet CvsB (PNet)
-      expression: ak.pad_none(objects['jets'], target=2)[:, 0].btagPNetCvB
   layout:
     dilepton_mass:
       - dilepton_mass
@@ -433,20 +373,10 @@ histogram_config:
       - cjet_cand_flavour
       - cjet_cand_cvsl_pnet
       - cjet_cand_cvsb_pnet
-    jets:
-      - jet_pt
-      - jet_eta
-      - jet_phi
-    jet_multiplicity:
-      - jet_multiplicity
     cjet_multiplicity:
       - cjet_multiplicity
     bjet_multiplicity:
       - bjet_multiplicity
-    leading_jet:
-      - leadingjet_flavour
-      - leadingjet_cvsb_pnet
-      - leadingjet_cvsl_pnet
   add_syst_axis: true
   add_weight: true
 
