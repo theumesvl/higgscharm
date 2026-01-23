@@ -562,8 +562,50 @@ class ObjectSelector:
             ak.argmax(self.objects["cjets"].btagPNetCvL, axis=1)
             == ak.local_index(self.objects["cjets"], axis=1)
         ]
+        self.objects["candidate_cjet_lorentzvector"] = ak.zip(
+            {
+                "pt": self.objects["candidate_cjet"].pt,
+                "eta": self.objects["candidate_cjet"].eta,
+                "phi": self.objects["candidate_cjet"].phi,
+                "mass": self.objects["candidate_cjet"].mass,
+            },
+            with_name="PtEtaPhiMCandidate",
+            behavior=candidate.behavior,
+        )
+
+
     def select_candidate_bjet(self, obj_name):
         self.objects["candidate_bjet"] = self.objects["bjets"][
             ak.argmax(self.objects["bjets"].btagPNetB, axis=1)
             == ak.local_index(self.objects["bjets"], axis=1)
         ]
+
+    def select_delta_phi(self, obj_name):    
+        ll_plus_met = self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2 + self.objects["met"]
+        ll_plus_met = ak.firsts(ll_plus_met)
+        cjet = ak.firsts(self.objects["candidate_cjet_lorentzvector"])
+        self.objects["delta_phi_llPlusMET_c"] = ll_plus_met.delta_phi(cjet)
+        
+        self.objects["delta_phi_ll_MET"] = (
+            (self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2).delta_phi(self.objects["met"])
+        )
+        self.objects["delta_phi_l1_MET"] = (
+            self.objects["ll_pair"].l1.delta_phi(self.objects["met"])
+        )
+        self.objects["delta_phi_l2_MET"]= (
+            self.objects["ll_pair"].l2.delta_phi(self.objects["met"])
+        )
+        
+    def select_delta_R(self, obj_name): 
+        ll_pair = self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ll_pair = ak.firsts(ll_pair)
+        self.objects["delta_R_ll_l1"]= (
+            ll_pair.delta_r(self.objects["ll_pair"].l1)
+        )
+        self.objects["delta_R_ll_l2"]= (
+            ll_pair.delta_r(self.objects["ll_pair"].l2)
+        )
+        cjet = ak.firsts(self.objects["candidate_cjet_lorentzvector"])
+        self.objects["delta_R_ll_c"]= (
+            ll_pair.delta_r(cjet)
+        )
