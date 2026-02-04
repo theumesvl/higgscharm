@@ -583,8 +583,11 @@ class ObjectSelector:
     def select_delta_phi(self, obj_name):    
         ll_plus_met = self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2 + self.objects["met"]
         ll_plus_met = ak.firsts(ll_plus_met)
+        l1_plus_met = self.objects["ll_pair"].l1 + self.objects["met"]
+        l1_plus_met = ak.firsts(l1_plus_met)
         cjet = ak.firsts(self.objects["candidate_cjet_lorentzvector"])
         self.objects["delta_phi_llPlusMET_c"] = ll_plus_met.delta_phi(cjet)
+        self.objects["delta_phi_l1PlusMET_c"] = l1_plus_met.delta_phi(cjet)
         
         self.objects["delta_phi_ll_MET"] = (
             (self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2).delta_phi(self.objects["met"])
