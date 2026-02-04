@@ -499,7 +499,7 @@ class ObjectSelector:
         leptons = ak.concatenate(
             [self.objects["muons"], self.objects["electrons"]], axis=1
         )
-        leptons = leptons[ak.argsort(leptons.pt, axis=1)]
+        leptons = leptons[ak.argsort(leptons.pt, ascending=False, axis=1)]
         self.objects[obj_name] = ak.zip(
             {
                 "pt": leptons.pt,
@@ -513,32 +513,99 @@ class ObjectSelector:
             behavior=candidate.behavior,
         )
 
-    def select_hww_zcandidates(self, obj_name):
-        self.objects["zcandidates"] = ak.combinations(
-            self.objects["leptons"], 2, fields=["l1", "l2"]
-        )
-        self.objects["zcandidates"].pt = (
-            self.objects["zcandidates"].l1.pt + self.objects["zcandidates"].l2.pt
-        )
+    def select_hww_ll_pair(self, obj_name):
+        has_lepton = ak.num(self.objects["leptons"]) >= 1
+        #self.objects["first_leptons"] = ak.where(has_lepton, self.objects["leptons"][:, 0], None)
 
-    def select_hww_mll(self, obj_name):
-        self.objects["mll"] = transverse_mass(
-            self.objects["zcandidates"].l1 + self.objects["zcandidates"].l2,
+        has_second = ak.num(self.objects["leptons"]) >= 2
+        #self.objects["second_leptons"] = ak.where(has_second, self.objects["leptons"][:, 1], None)
+
+        self.objects["dilepton"] = ak.where(has_second, self.objects["leptons"][:, :2], None)
+        has_two = ak.num(self.objects["leptons"], axis=1) >= 2
+        dilepton_masked = ak.mask(self.objects["leptons"], has_two)
+        dilepton = dilepton_masked[:, :2]
+        self.objects["dilepton"] = dilepton
+
+        self.objects["ll_pair"] = ak.combinations(
+            self.objects["dilepton"], 2, fields=["l1", "l2"]
+        )
+        self.objects["ll_pair"].pt = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).pt
+        self.objects["ll_pair"].eta = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).eta
+        self.objects["ll_pair"].phi = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).phi
+        self.objects["ll_pair"].mass = (
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ).mass
+    def select_hww_mTll(self, obj_name):
+        self.objects["mTll"] = transverse_mass(
+            self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2,
             self.objects["met"],
         )
 
-    def select_hww_ml1(self, obj_name):
-        self.objects["ml1"] = transverse_mass(
-            self.objects["zcandidates"].l1, self.objects["met"]
+    def select_hww_mTl1(self, obj_name):
+        self.objects["mTl1"] = transverse_mass(
+            self.objects["ll_pair"].l1, self.objects["met"]
         )
 
-    def select_hww_ml2(self, obj_name):
-        self.objects["ml2"] = transverse_mass(
-            self.objects["zcandidates"].l2, self.objects["met"]
+    def select_hww_mTl2(self, obj_name):
+        self.objects["mTl2"] = transverse_mass(
+            self.objects["ll_pair"].l2, self.objects["met"]
         )
 
     def select_candidate_cjet(self, obj_name):
         self.objects["candidate_cjet"] = self.objects["cjets"][
-            ak.argmax(self.objects["cjets"].btagDeepFlavCvL, axis=1)
+            ak.argmax(self.objects["cjets"].btagPNetCvL, axis=1)
             == ak.local_index(self.objects["cjets"], axis=1)
         ]
+        self.objects["candidate_cjet_lorentzvector"] = ak.zip(
+            {
+                "pt": self.objects["candidate_cjet"].pt,
+                "eta": self.objects["candidate_cjet"].eta,
+                "phi": self.objects["candidate_cjet"].phi,
+                "mass": self.objects["candidate_cjet"].mass,
+            },
+            with_name="PtEtaPhiMCandidate",
+            behavior=candidate.behavior,
+        )
+
+
+    def select_candidate_bjet(self, obj_name):
+        self.objects["candidate_bjet"] = self.objects["bjets"][
+            ak.argmax(self.objects["bjets"].btagPNetB, axis=1)
+            == ak.local_index(self.objects["bjets"], axis=1)
+        ]
+
+    def select_delta_phi(self, obj_name):    
+        ll_plus_met = self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2 + self.objects["met"]
+        ll_plus_met = ak.firsts(ll_plus_met)
+        cjet = ak.firsts(self.objects["candidate_cjet_lorentzvector"])
+        self.objects["delta_phi_llPlusMET_c"] = ll_plus_met.delta_phi(cjet)
+        
+        self.objects["delta_phi_ll_MET"] = (
+            (self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2).delta_phi(self.objects["met"])
+        )
+        self.objects["delta_phi_l1_MET"] = (
+            self.objects["ll_pair"].l1.delta_phi(self.objects["met"])
+        )
+        self.objects["delta_phi_l2_MET"]= (
+            self.objects["ll_pair"].l2.delta_phi(self.objects["met"])
+        )
+        
+    def select_delta_R(self, obj_name): 
+        ll_pair = self.objects["ll_pair"].l1 + self.objects["ll_pair"].l2
+        ll_pair = ak.firsts(ll_pair)
+        self.objects["delta_R_ll_l1"]= (
+            ll_pair.delta_r(self.objects["ll_pair"].l1)
+        )
+        self.objects["delta_R_ll_l2"]= (
+            ll_pair.delta_r(self.objects["ll_pair"].l2)
+        )
+        cjet = ak.firsts(self.objects["candidate_cjet_lorentzvector"])
+        self.objects["delta_R_ll_c"]= (
+            ll_pair.delta_r(cjet)
+        )
