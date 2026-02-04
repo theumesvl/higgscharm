@@ -126,3 +126,117 @@ ZZ:
     - zz
   query: ZZ_TuneCP5_13TeV-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
   xsec: 12.17
+GluGluHToWWTo2L2Nu:
+  era: mc
+  process: ggH
+  key: gghtoww
+  query: GluGluHToWWTo2L2Nu_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.9913
+VBFHToWWTo2L2Nu:
+  era: mc
+  process: VBF
+  key: vbfhtoww
+  query: VBFHToWWTo2L2Nu_M125_TuneCP5_13TeV_powheg2_JHUGenV714_pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.0846
+HWplusJ_HToWW:
+  era: mc
+  process: WH
+  key: whtoww
+  query: HWplusJ_HToWW_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.105
+HWminusJ_HToWW:
+  era: mc
+  process: WH
+  key: whtoww
+  query: HWminusJ_HToWW_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.116
+HZJ_HToWW:
+  era: mc
+  process: ZH
+  key: zh
+  query: HZJ_HToWW_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.189
+GluGluZH_HToWW:
+  era: mc
+  process: ggZH
+  key: ggzh
+  query: GluGluZH_HToWW_M-125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.0304
+ttHToNonbb:
+  era: mc
+  process: ttHnonBB
+  key: tthnonbb
+  query: ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.02855
+GluGluHToTauTau:
+  era: mc
+  process: ggH
+  key: gghto2tau
+  query: GluGluHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 3.16
+VBFHToTauTau:
+  era: mc
+  process: VBF
+  key: vbfhto2tau
+  query: VBFHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.234
+WminusHToTauTau:
+  era: mc
+  process: WH
+  key: whto2tau
+  query: WminusHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.0327
+WplusHToTauTau:
+  era: mc
+  process: WH
+  key: whto2tau
+  query: WplusHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.0516
+ZHToTauTau:
+  era: mc
+  process: ZH
+  key: zhto2tau
+  query: ZHToTauTau_M125_CP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM
+  xsec: 0.0544
+ttHToTauTau:
+  era: mc
+  process: ttH
+  key: tthto2tau
+  query: ttHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.0312
+HPlusBottom_5FS_HToWWTo2L2Nu_FXFX:
+  era: mc
+  process: H+b
+  key: hb
+  query: HPlusBottom_5FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.0158
+HPlusBottom_5FS_HToWWTo2L2Nu:
+  era: mc
+  process: H+b
+  key: hb5fs
+  query: HPlusBottom_5FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.0129
+HPlusBottom_4FS_HToWWTo2L2Nu:
+  era: mc
+  process: H+b
+  key: hb4fs
+  query: HPlusBottom_4FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.00828
+HPlusCharm_4FS_HToWWTo2L2Nu_FXFX:
+  era: mc
+  process: H+c
+  key: hc
+  query: HPlusCharm_4FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.00204
+HPlusCharm_4FS_HToWWTo2L2Nu:
+  era: mc
+  process: H+c
+  key: hc4fs
+  query: HPlusCharm_4FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.00183
+HPlusCharm_3FS_HToWWTo2L2Nu:
+  era: mc
+  process: H+c
+  key: hc3fs
+  query: HPlusCharm_3FS_MuRFScaleDynX0p50_HToWWTo2L2Nu_M125_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM
+  xsec: 0.00113
