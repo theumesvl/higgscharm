@@ -182,19 +182,25 @@ WW:
   era: mc
   query: WW_TuneCP5_13p6TeV_pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM
   process: WW
-  key: ww
+  key: 
+    - ww
+    - diboson
   xsec: 122.30
 WZ:
   era: mc
   query: WZ_TuneCP5_13p6TeV_pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM
   process: WZ
-  key: wz
+  key: 
+    - wz
+    - diboson
   xsec: 54.30
 ZZ:
   era: mc
   query: ZZ_TuneCP5_13p6TeV_pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM
   process: ZZ
-  key: zz
+  key: 
+    - zz
+    - diboson
   xsec: 16.70
 ZZZ:
   era: mc
