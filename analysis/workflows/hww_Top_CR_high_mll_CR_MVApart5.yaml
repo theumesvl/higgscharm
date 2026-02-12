@@ -179,106 +179,27 @@ histogram_config:
         - 500
       label: $m(\ell\ell)$ [GeV]
       expression: (objects["ll_pair"].l1 + objects["ll_pair"].l2).mass
-    delta_phi_l1PlusMET_c:
+    delta_phi_llPlusMET_jet1:
       type: Regular
       bins: 20
       start: -3.14159
       stop: 3.14159
-      label: $\Delta \phi(\ell_1 +$ MET$,$ candidate c-jet$)$
-      expression: objects['delta_phi_l1PlusMET_c']
-    delta_phi_l1PlusMET_jet1:
+      label: $\Delta \phi(\ell \ell, j_1)$
+      expression: objects['delta_phi_llPlusMET_jet1']
+    delta_phi_llPlusMET_jet2:
       type: Regular
       bins: 20
       start: -3.14159
       stop: 3.14159
-      label: $\Delta \phi(\ell_1 +$ MET$, j_1)$
-      expression: objects['delta_phi_l1PlusMET_jet1']
-    delta_phi_l1PlusMET_jet2:
+      label: $\Delta \phi(\ell \ell, j_2)$
+      expression: objects['delta_phi_llPlusMET_jet2']
+    delta_phi_llPlusMET_jet3:
       type: Regular
       bins: 20
       start: -3.14159
       stop: 3.14159
-      label: $\Delta \phi(\ell_1 +$ MET$, j_2)$
-      expression: objects['delta_phi_l1PlusMET_jet2']
-    delta_phi_l1PlusMET_jet3:
-      type: Regular
-      bins: 20
-      start: -3.14159
-      stop: 3.14159
-      label: $\Delta \phi(\ell_1 +$ MET$, j_3)$
-      expression: objects['delta_phi_l1PlusMET_jet3']
-    jet1_pt:
-      type: Variable
-      edges:
-        - 0
-        - 20
-        - 40
-        - 60
-        - 80
-        - 100
-        - 120
-        - 150
-        - 180
-        - 210
-        - 240
-        - 300
-        - 350
-        - 400
-      label: Leading jet $p_T$ [GeV]
-      expression: objects['jet1'].pt
-    jet2_pt:
-      type: Variable
-      edges:
-        - 0
-        - 20
-        - 40
-        - 60
-        - 80
-        - 100
-        - 120
-        - 150
-        - 180
-        - 210
-        - 240
-        - 300
-      label: Subleading jet $p_T$ [GeV]
-      expression: objects['jet2'].pt
-    jet3_pt:
-      type: Variable
-      edges:
-        - 0
-        - 20
-        - 40
-        - 60
-        - 80
-        - 100
-        - 120
-        - 150
-        - 180
-        - 210
-      label: Third leading jet $p_T$ [GeV]
-      expression: objects['jet2'].pt
-    delta_R_ll_jet1:
-      type: Regular
-      bins: 20
-      start: 0
-      stop: 5
-      label: $\Delta R(\ell \ell, j_1)$
-      expression: objects['delta_R_ll_jet1']
-    delta_R_ll_jet2:
-      type: Regular
-      bins: 20
-      start: 0
-      stop: 5
-      label: $\Delta R(\ell \ell, j_2)$
-      expression: objects['delta_R_ll_jet2']
-    delta_R_ll_jet3:
-      type: Regular
-      bins: 20
-      start: 0
-      stop: 5
-      label: $\Delta R(\ell \ell, j_3)$
-      expression: objects['delta_R_ll_jet3']
+      label: $\Delta \phi(\ell \ell, j_3)$
+      expression: objects['delta_phi_llPlusMET_jet3']
   layout:
     dilepton_mass:
       - dilepton_mass
