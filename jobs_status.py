@@ -1,15 +1,18 @@
 """Check job outputs, identify missing results, and optionally resubmit jobs or update input filesets based on xrootd site issues"""
 
-import yaml
-import json
 import argparse
+import json
 import logging
 import subprocess
-from pathlib import Path
 from datetime import datetime, timedelta
-from analysis.utils import make_output_directory
+from pathlib import Path
+
+import yaml
+
+from analysis.filesets.utils import (divide_list, extract_xrootd_errors,
+                                     modify_site_list)
 from analysis.filesets.xrootd_sites import xroot_to_site
-from analysis.filesets.utils import divide_list, modify_site_list, extract_xrootd_errors
+from analysis.utils import make_output_directory
 
 
 def parse_args():

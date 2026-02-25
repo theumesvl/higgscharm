@@ -1,22 +1,22 @@
-import yaml
 import logging
-import numpy as np
-import mplhep as hep
-import matplotlib.pyplot as plt
 from pathlib import Path
-from matplotlib import ticker
-from matplotlib.lines import Line2D
+
+import matplotlib.pyplot as plt
+import mplhep as hep
+import numpy as np
+import yaml
 from coffea.processor import accumulate
 from hist.intervals import poisson_interval
+from matplotlib import ticker
+from matplotlib.lines import Line2D
 from matplotlib.offsetbox import AnchoredText
-from analysis.filesets.utils import get_workflow_key_process_map, get_process_era_map
-from analysis.histograms import VariableAxis, IntegerAxis
+
+from analysis.filesets.utils import (get_process_era_map,
+                                     get_workflow_key_process_map)
+from analysis.histograms import IntegerAxis, VariableAxis
+from analysis.postprocess.utils import (divide_by_binwidth,
+                                        get_variations_keys, setup_logger)
 from analysis.workflows.config import WorkflowConfigBuilder
-from analysis.postprocess.utils import (
-    setup_logger,
-    divide_by_binwidth,
-    get_variations_keys,
-)
 
 np.seterr(invalid="ignore")
 np.seterr(divide="ignore")
@@ -118,7 +118,7 @@ class CoffeaPlotter:
         histogram_info = {}
         if "mc" in self.datasets:
             histogram_info["mc"] = {"nominal": {}, "variations": {}}
-        if "signal" in self.datasets:
+        if True: #"signal" in self.datasets:
             histogram_info["signal"] = {"nominal": {}}
         if self.group_by != "process":
             histogram_info["categories"] = {}
@@ -141,6 +141,8 @@ class CoffeaPlotter:
                 )
             else:
                 key = self.process_era_map[process]
+                if(process=="H+c"):
+                    key="signal"
                 if self.group_by != "process":
                     cat_axis = aux_histogram.axes[self.group_by["name"]]
                     self.category_map = {cat_axis.index(cat): cat for cat in cat_axis}
@@ -445,13 +447,14 @@ class CoffeaPlotter:
                 ax=ax,
                 **self.style["data_hist_kwargs"],
             )
-        if "signal" in self.datasets:
+        if True: #"signal" in self.datasets:
+            signal_scale = 10000
             for signal_process, signal_histogram in histogram_info["signal"][
                 "nominal"
             ].items():
                 hep.histplot(
-                    signal_histogram,
-                    label=signal_process,
+                    signal_histogram * signal_scale,
+                    label=f"{signal_process} x{signal_scale}",
                     color=self.color_map[signal_process],
                     flow="none",
                     ax=ax,
