@@ -41,6 +41,8 @@ object_selection:
       - objects['dimuons'].l1.delta_r(objects['dimuons'].l2) > 0.3
       - objects['dimuons'].l1.charge * objects['dimuons'].l2.charge < 0
       - (objects['dimuons'].p4.mass > 60.0) & (objects['dimuons'].p4.mass < 120.0)
+  leptons:
+    field: select_hww_leptons
 event_selection:
   hlt_paths:
     Muon:
@@ -334,6 +336,8 @@ histogram_config:
       - subleading_muon_pt
     subleading_muon_eta:
       - subleading_muon_eta
+    subleading_muon_phi:
+      - subleading_muon_phi
     jet_pt:
       - jet_pt
     jet_phi:
@@ -358,3 +362,4 @@ histogram_config:
       - leadingjet_cvsl_partb
     vertex:
       - npvs
+
