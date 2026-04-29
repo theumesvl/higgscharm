@@ -8,6 +8,6 @@ should_transfer_files = YES
 transfer_input_files  = INPUTFILES
 
 +JobFlavour           = "longlunch"
-+SingularityImage     = "/cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest-py3.9"
++SingularityImage     = "/cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest-py3.10"
 
 Queue JOBNUM from JOBNUM_FILE
